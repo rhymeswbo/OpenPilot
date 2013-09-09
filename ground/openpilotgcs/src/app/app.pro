@@ -4,7 +4,8 @@ include(../shared/qtsingleapplication/qtsingleapplication.pri)
 TEMPLATE = app
 TARGET = $$GCS_APP_TARGET
 DESTDIR = $$GCS_APP_PATH
-QT += xml
+QT += xml \
+    widgets
 SOURCES += main.cpp \
     gcssplashscreen.cpp
 

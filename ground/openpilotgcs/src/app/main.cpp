@@ -86,6 +86,7 @@
 #include <extensionsystem/iplugin.h>
 
 #include <QtCore/QDir>
+#include <QtCore/QFile>
 #include <QtCore/QElapsedTimer>
 #include <QtCore/QTextStream>
 #include <QtCore/QFileInfo>
@@ -96,10 +97,10 @@
 #include <QtCore/QSettings>
 #include <QtCore/QVariant>
 
-#include <QtGui/QMessageBox>
-#include <QtGui/QApplication>
-#include <QtGui/QMainWindow>
-#include <QtGui/QSplashScreen>
+#include <QMessageBox>
+#include <QtWidgets/QApplication>
+#include <QMainWindow>
+#include <QSplashScreen>
 
 namespace {
 typedef QList<ExtensionSystem::PluginSpec *> PluginSpecSet;
@@ -404,6 +405,26 @@ void loadTranslators(QString language, QTranslator &translator, QTranslator &qtT
         }
     }
 }
+
+void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+{
+    QFile file(QDir::tempPath() + "/gcs.log");
+
+    if (file.open(QIODevice::Append | QIODevice::Text)) {
+        QTextStream out(&file);
+        out << QTime::currentTime().toString("hh:mm:ss.zzz ");
+
+        switch (type) {
+        case QtDebugMsg:    out << "DBG: "; break;
+        case QtWarningMsg:  out << "WRN: "; break;
+        case QtCriticalMsg: out << "CRT: "; break;
+        case QtFatalMsg:    out << "FTL: "; break;
+        }
+
+        out << msg << '\n';
+        out.flush();
+    }
+}
 } // namespace anonymous
 
 int main(int argc, char * *argv)
@@ -414,6 +435,15 @@ int main(int argc, char * *argv)
 
     // low level init
     systemInit();
+#ifdef QT_NO_DEBUG
+    qInstallMessageHandler(myMessageOutput);
+    QFile file(QDir::tempPath() + "/gcs.log");
+    if (file.exists()) {
+        if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            // erase old log
+        }
+    }
+#endif
 
     // create application
     SharedTools::QtSingleApplication app(APP_NAME, argc, argv);
@@ -497,7 +527,7 @@ int main(int argc, char * *argv)
         splash = new GCSSplashScreen();
         // show splash
         splash->showProgressMessage(QObject::tr("Application starting..."));
-        splash->show();
+        //splash->show();
         // connect to track progress of plugin manager
         QObject::connect(&pluginManager, SIGNAL(pluginAboutToBeLoaded(ExtensionSystem::PluginSpec *)), splash,
                          SLOT(showPluginLoadingProgress(ExtensionSystem::PluginSpec *)));
