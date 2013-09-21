@@ -74,7 +74,7 @@ public:
 	virtual QGraphicsView *display() {return m_map;}
 
 	// TODO prüfen, wie man die aus public rauskriegt
-	bool getGPSPosition(double &latitude, double &longitude, double &altitude);
+	bool getGPSPositionSensor(double &latitude, double &longitude, double &altitude);
 	void setHome(QPointF pos);
 	void setHome(internals::PointLatLng pos_lat_lon, double altitude);
 	// TODO das hier in applyConfiguration verwenden

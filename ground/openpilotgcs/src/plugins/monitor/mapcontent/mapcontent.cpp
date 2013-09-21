@@ -41,14 +41,14 @@
 #include "utils/stylehelper.h"
 #include "utils/homelocationutil.h"
 
-#include "positionactual.h"
+#include "positionstate.h"
 #include "homelocation.h"
-#include "gpsposition.h"
-#include "gyros.h"
-#include "attitudeactual.h"
-#include "velocityactual.h"
-#include "airspeedactual.h"
-
+#include "gpspositionsensor.h"
+#include "gyrostate.h"
+#include "attitudestate.h"
+#include "positionstate.h"
+#include "velocitystate.h"
+#include "airspeedstate.h"
 
 
 #include "QtDebug"
@@ -265,14 +265,14 @@ bool MapContent::getUAVPosition(double &latitude, double &longitude,
 
     Q_ASSERT(obm != NULL);
 
-    PositionActual *positionActual = PositionActual::GetInstance(obm);
-    Q_ASSERT(positionActual != NULL);
-    PositionActual::DataFields positionActualData = positionActual->getData();
-    if (positionActualData.North == 0 && positionActualData.East == 0 && positionActualData.Down == 0) {
-        GPSPosition *gpsPositionObj = GPSPosition::GetInstance(obm);
+    PositionState *positionState = PositionState::GetInstance(obm);
+    Q_ASSERT(positionState != NULL);
+    PositionState::DataFields positionStateData = positionState->getData();
+    if (positionStateData.North == 0 && positionStateData.East == 0 && positionStateData.Down == 0) {
+        GPSPositionSensor *gpsPositionObj = GPSPositionSensor::GetInstance(obm);
         Q_ASSERT(gpsPositionObj);
 
-        GPSPosition::DataFields gpsPositionData = gpsPositionObj->getData();
+        GPSPositionSensor::DataFields gpsPositionData = gpsPositionObj->getData();
         latitude  = gpsPositionData.Latitude / 1.0e7;
         longitude = gpsPositionData.Longitude / 1.0e7;
         altitude  = gpsPositionData.Altitude;
@@ -286,9 +286,9 @@ bool MapContent::getUAVPosition(double &latitude, double &longitude,
     homeLLA[1] = homeLocationData.Longitude / 1.0e7;
     homeLLA[2] = homeLocationData.Altitude;
 
-    NED[0]     = positionActualData.North;
-    NED[1]     = positionActualData.East;
-    NED[2]     = positionActualData.Down;
+    NED[0]     = positionStateData.North;
+    NED[1]     = positionStateData.East;
+    NED[2]     = positionStateData.Down;
 
     Utils::CoordinateConversions().NED2LLA_HomeLLA(homeLLA, NED, LLA);
 
@@ -344,119 +344,109 @@ double MapContent::getUAV_Yaw() {
  as set inside the constructor.
  */
 void MapContent::updatePosition() {
-    double uav_latitude, uav_longitude, uav_altitude, uav_yaw;
-    double gps_latitude, gps_longitude, gps_altitude, gps_heading;
+	   double uav_latitude, uav_longitude, uav_altitude, uav_yaw;
+	    double gps_latitude, gps_longitude, gps_altitude, gps_heading;
 
-    internals::PointLatLng uav_pos;
-    internals::PointLatLng gps_pos;
+	    internals::PointLatLng uav_pos;
+	    internals::PointLatLng gps_pos;
 
-    if (!m_map) {
-        return;
-    }
+	    if (!m_map) {
+	        return;
+	    }
 
-    QMutexLocker locker(&m_map_mutex);
+	    QMutexLocker locker(&m_map_mutex);
 
-    // *************
-    // get the current UAV details
+	    // *************
+	    // get the current UAV details
 
-    // get current UAV position
-    if (!getUAVPosition(uav_latitude, uav_longitude, uav_altitude)) {
-        return;
-    }
+	    // get current UAV position
+	    if (!getUAVPosition(uav_latitude, uav_longitude, uav_altitude)) {
+	        return;
+	    }
 
-    // get current UAV heading
-    uav_yaw = getUAV_Yaw();
+	    // get current UAV heading
+	    uav_yaw = getUAV_Yaw();
 
-    uav_pos = internals::PointLatLng(uav_latitude, uav_longitude);
+	    uav_pos = internals::PointLatLng(uav_latitude, uav_longitude);
 
-    // *************
-    // get the current GPS position and heading
-    GPSPosition *gpsPositionObj = GPSPosition::GetInstance(obm);
-    Q_ASSERT(gpsPositionObj);
+	    // *************
+	    // get the current GPS position and heading
+	    GPSPositionSensor *gpsPositionObj = GPSPositionSensor::GetInstance(obm);
+	    Q_ASSERT(gpsPositionObj);
 
-    GPSPosition::DataFields gpsPositionData = gpsPositionObj->getData();
+	    GPSPositionSensor::DataFields gpsPositionData = gpsPositionObj->getData();
 
-    gps_heading   = gpsPositionData.Heading;
-    gps_latitude  = gpsPositionData.Latitude;
-    gps_longitude = gpsPositionData.Longitude;
-    gps_altitude  = gpsPositionData.Altitude;
+	    gps_heading   = gpsPositionData.Heading;
+	    gps_latitude  = gpsPositionData.Latitude;
+	    gps_longitude = gpsPositionData.Longitude;
+	    gps_altitude  = gpsPositionData.Altitude;
 
-    gps_pos = internals::PointLatLng(gps_latitude * 1e-7, gps_longitude * 1e-7);
+	    gps_pos = internals::PointLatLng(gps_latitude * 1e-7, gps_longitude * 1e-7);
 
-    // **********************
-    // get the current position and heading estimates
-    AttitudeActual *attitudeActualObj = AttitudeActual::GetInstance(obm);
-    PositionActual *positionActualObj = PositionActual::GetInstance(obm);
-    VelocityActual *velocityActualObj = VelocityActual::GetInstance(obm);
-    AirspeedActual *airspeedActualObj = AirspeedActual::GetInstance(obm);
+	    // **********************
+	    // get the current position and heading estimates
+	    AttitudeState *attitudeStateObj = AttitudeState::GetInstance(obm);
+	    PositionState *positionStateObj = PositionState::GetInstance(obm);
+	    VelocityState *velocityStateObj = VelocityState::GetInstance(obm);
+	    AirspeedState *airspeedStateObj = AirspeedState::GetInstance(obm);
 
-    Gyros *gyrosObj = Gyros::GetInstance(obm);
+	    GyroState *gyroStateObj = GyroState::GetInstance(obm);
 
-    Q_ASSERT(attitudeActualObj);
-    Q_ASSERT(positionActualObj);
-    Q_ASSERT(velocityActualObj);
-    Q_ASSERT(airspeedActualObj);
-    Q_ASSERT(gyrosObj);
+	    Q_ASSERT(attitudeStateObj);
+	    Q_ASSERT(positionStateObj);
+	    Q_ASSERT(velocityStateObj);
+	    Q_ASSERT(airspeedStateObj);
+	    Q_ASSERT(gyroStateObj);
 
-    AttitudeActual::DataFields attitudeActualData = attitudeActualObj->getData();
-    PositionActual::DataFields positionActualData = positionActualObj->getData();
-    VelocityActual::DataFields velocityActualData = velocityActualObj->getData();
-    AirspeedActual::DataFields airspeedActualData = airspeedActualObj->getData();
+	    AttitudeState::DataFields attitudeStateData = attitudeStateObj->getData();
+	    PositionState::DataFields positionStateData = positionStateObj->getData();
+	    VelocityState::DataFields velocityStateData = velocityStateObj->getData();
+	    AirspeedState::DataFields airspeedStateData = airspeedStateObj->getData();
 
-    Gyros::DataFields gyrosData = gyrosObj->getData();
+	    GyroState::DataFields gyroStateData = gyroStateObj->getData();
 
-    double NED[3]  = { positionActualData.North, positionActualData.East, positionActualData.Down };
-    double vNED[3] = { velocityActualData.North, velocityActualData.East, velocityActualData.Down };
+	    double NED[3]  = { positionStateData.North, positionStateData.East, positionStateData.Down };
+	    double vNED[3] = { velocityStateData.North, velocityStateData.East, velocityStateData.Down };
 
-    // Set the position and heading estimates in the painter module
-    m_map->UAV->SetNED(NED);
-    m_map->UAV->SetCAS(airspeedActualData.CalibratedAirspeed);
-    m_map->UAV->SetGroundspeed(vNED, m_updateRate);
+	    // Set the position and heading estimates in the painter module
+	    m_map->UAV->SetNED(NED);
+	    m_map->UAV->SetCAS(airspeedStateData.CalibratedAirspeed);
+	    m_map->UAV->SetGroundspeed(vNED, m_updateRate);
 
-    // Convert angular velocities into a rotationg rate around the world-frame yaw axis. This is found by simply taking the dot product of the angular Euler-rate matrix with the angular rates.
-    float psiRate_dps = 0 * gyrosData.z + sin(attitudeActualData.Roll * deg_to_rad) / cos(attitudeActualData.Pitch * deg_to_rad) * gyrosData.y + cos(attitudeActualData.Roll * deg_to_rad) / cos(attitudeActualData.Pitch * deg_to_rad) * gyrosData.z;
+	    // Convert angular velocities into a rotationg rate around the world-frame yaw axis. This is found by simply taking the dot product of the angular Euler-rate matrix with the angular rates.
+	    float psiRate_dps = 0 * gyroStateData.z + sin(attitudeStateData.Roll * deg_to_rad) / cos(attitudeStateData.Pitch * deg_to_rad) * gyroStateData.y + cos(attitudeStateData.Roll * deg_to_rad) / cos(attitudeStateData.Pitch * deg_to_rad) * gyroStateData.z;
 
-    // Set the angular rate in the painter module
-    m_map->UAV->SetYawRate(psiRate_dps); // Not correct, but I'm being lazy right now.
+	    // Set the angular rate in the painter module
+	    m_map->UAV->SetYawRate(psiRate_dps); // Not correct, but I'm being lazy right now.
 
-    // *************
-    // display the UAV position
+	    // *************
+	    // set the UAV icon position on the map
 
-    QString str =
-        "lat: " + QString::number(uav_pos.Lat(), 'f', 7) +
-        " lon: " + QString::number(uav_pos.Lng(), 'f', 7) +
-        " " + QString::number(uav_yaw, 'f', 1) + "deg" +
-        " " + QString::number(uav_altitude, 'f', 1) + "m";
-// " " + QString::number(uav_ground_speed_meters_per_second, 'f', 1) + "m/s";
-//    m_widget->labelUAVPos->setText(str);
+	    m_map->UAV->SetUAVPos(uav_pos, uav_altitude); // set the maps UAV position
+	// qDebug()<<"UAVPOSITION"<<uav_pos.ToString();
+	    m_map->UAV->SetUAVHeading(uav_yaw); // set the maps UAV heading
 
-    // *************
-    // set the UAV icon position on the map
-
-    m_map->UAV->SetUAVPos(uav_pos, uav_altitude); // set the maps UAV position
-// qDebug()<<"UAVPOSITION"<<uav_pos.ToString();
-    m_map->UAV->SetUAVHeading(uav_yaw); // set the maps UAV heading
-
-    // *************
-    // set the GPS icon position on the map
-    if (m_map->GPS) {
-        m_map->GPS->SetUAVPos(gps_pos, gps_altitude); // set the maps GPS position
-        m_map->GPS->SetUAVHeading(gps_heading); // set the maps GPS heading
-        m_map->GPS->update();
-    }
-    m_map->UAV->updateTextOverlay();
-    m_map->UAV->update();
-    // *************
+	    // *************
+	    // set the GPS icon position on the map
+	    if (m_map->GPS) {
+	        m_map->GPS->SetUAVPos(gps_pos, gps_altitude); // set the maps GPS position
+	        m_map->GPS->SetUAVHeading(gps_heading); // set the maps GPS heading
+	        m_map->GPS->update();
+	    }
+	    m_map->UAV->updateTextOverlay();
+	    m_map->UAV->update();
+	    // *************
 }
 
-bool MapContent::getGPSPosition(double &latitude, double &longitude, double &altitude) {
+bool MapContent::getGPSPositionSensor(double &latitude, double &longitude,
+		double &altitude) {
 	double LLA[3];
 
 	if (!obum) {
 		return false;
 	}
 
-	if (obum->getGPSPosition(LLA) < 0) {
+	if (obum->getGPSPositionSensor(LLA) < 0) {
 		return false; // error
 	}
 
