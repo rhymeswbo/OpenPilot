@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MapOptionsPage</class>
+ <widget class="QWidget" name="MapOptionsPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>523</width>
+    <height>391</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>445</width>
+    <height>5</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Map settings</string>
+     </property>
+     <widget class="QGroupBox" name="groupBoxEnvMap">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>19</y>
+        <width>511</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Environment Map</string>
+      </property>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Provider</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="envProviderComboBox">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>20</y>
+         <width>151</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>OpenHandCursor</cursorShape>
+       </property>
+       <property name="maxVisibleItems">
+        <number>15</number>
+       </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxUseOpenGL">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>248</x>
+         <y>20</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="text">
+        <string>Use OpenGL</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxUseOpenGL_2">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>383</x>
+         <y>20</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="text">
+        <string>Use OpenGL</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBoxNavMap">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>76</y>
+        <width>511</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Navigation Map</string>
+      </property>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Provider</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="navProviderComboBox">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>20</y>
+         <width>151</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>OpenHandCursor</cursorShape>
+       </property>
+       <property name="maxVisibleItems">
+        <number>15</number>
+       </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxUseOpenGL_3">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>248</x>
+         <y>20</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="text">
+        <string>Use OpenGL</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxUseOpenGL_4">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>384</x>
+         <y>20</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="text">
+        <string>Use OpenGL</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBoxCache">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>190</y>
+        <width>511</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Server and Cache</string>
+      </property>
+      <widget class="QCheckBox" name="checkBoxUseMemoryCache">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>7</y>
+         <width>115</width>
+         <height>49</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="text">
+        <string>Use Memory Cache</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="accessModeComboBox">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>21</y>
+         <width>261</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>160</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>OpenHandCursor</cursorShape>
+       </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>7</y>
+         <width>65</width>
+         <height>49</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Access mode </string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButtonCacheDefaults">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>50</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>OpenHandCursor</cursorShape>
+       </property>
+       <property name="toolTip">
+        <string>Restore default server and cache settings</string>
+       </property>
+       <property name="text">
+        <string> Default </string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>8</x>
+         <y>37</y>
+         <width>73</width>
+         <height>49</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Location</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+      <widget class="Utils::PathChooser" name="lineEditCacheLocation" native="true">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>37</y>
+         <width>353</width>
+         <height>49</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBoxUAV">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>290</y>
+        <width>511</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>UAV</string>
+      </property>
+      <widget class="QComboBox" name="uavSymbolComboBox">
+       <property name="geometry">
+        <rect>
+         <x>95</x>
+         <y>18</y>
+         <width>81</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_8">
+       <property name="geometry">
+        <rect>
+         <x>24</x>
+         <y>4</y>
+         <width>57</width>
+         <height>49</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Symbol</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBoxUAV_2">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>134</y>
+        <width>511</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Default Position</string>
+      </property>
+      <widget class="QDoubleSpinBox" name="longitudeSpinBox">
+       <property name="geometry">
+        <rect>
+         <x>354</x>
+         <y>20</y>
+         <width>151</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
+       <property name="decimals">
+        <number>8</number>
+       </property>
+       <property name="minimum">
+        <double>-180.000000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>180.000000000000000</double>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>9</x>
+         <y>20</y>
+         <width>81</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Latitude </string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>289</x>
+         <y>20</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Longitude </string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="latitudeSpinBox">
+       <property name="geometry">
+        <rect>
+         <x>91</x>
+         <y>20</y>
+         <width>151</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
+       <property name="decimals">
+        <number>8</number>
+       </property>
+       <property name="minimum">
+        <double>-90.000000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>90.000000000000000</double>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Utils::PathChooser</class>
+   <extends>QWidget</extends>
+   <header>utils/pathchooser.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
