@@ -81,6 +81,10 @@
 #include "semphr.h"
 #endif
 
+#include <stdbool.h>
+
+#include <pios_architecture.h>
+
 #ifdef PIOS_INCLUDE_TASK_MONITOR
 #ifndef PIOS_INCLUDE_FREERTOS
 #error PiOS Task Monitor requires PIOS_INCLUDE_FREERTOS to be defined
