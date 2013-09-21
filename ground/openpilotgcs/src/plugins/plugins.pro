@@ -238,3 +238,10 @@ plugin_setupwizard.depends += plugin_config
 plugin_setupwizard.depends += plugin_uploader
 SUBDIRS += plugin_setupwizard
 
+# Monitor plugin
+plugin_monitor.subdir = monitor
+plugin_monitor.depends = plugin_coreplugin
+plugin_monitor.depends += plugin_uavobjects
+plugin_monitor.depends += plugin_uavobjectutil
+#plugin_monitor.depends += plugin_uavtalk
+SUBDIRS += plugin_monitor
