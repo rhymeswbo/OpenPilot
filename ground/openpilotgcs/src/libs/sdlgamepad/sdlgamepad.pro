@@ -21,6 +21,14 @@
 TEMPLATE     = lib
 TARGET      = sdlgamepad
 DEFINES     += SDLGAMEPAD_LIBRARY
+macx {
+    SDL = -F/Library/Frameworks
+    # Add SDL to CFLAGS fixes build problems on mac
+    QMAKE_CFLAGS += $$SDL
+    QMAKE_CXXFLAGS += $$SDL
+    # Let the linker know where to find the frameworks
+    LIBS += $$SDL
+}
 
 include(../../openpilotgcslibrary.pri)
 

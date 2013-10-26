@@ -29,8 +29,8 @@
 #define OPHID_CONST_H
 #include "QtDebug"
 
-#define printf         qDebug
-#define OPHID_DEBUG_ON 1
+//#define printf         qDebug
+//#define OPHID_DEBUG_ON 1
 #ifdef OPHID_DEBUG_ON
 #define OPHID_DEBUG(fmt, args ...)   qDebug("[DEBUG] "fmt,##args)
 #define OPHID_TRACE(fmt, args ...)   qDebug("[TRACE] %s:%s:%d: "fmt, __FILE__, __func__, __LINE__,##args)
