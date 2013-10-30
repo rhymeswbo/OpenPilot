@@ -9,6 +9,19 @@ include(../../plugins/coreplugin/coreplugin.pri)
 include(../../plugins/uavobjects/uavobjects.pri)
 include(../../libs/sdlgamepad/sdlgamepad.pri)
 
+macx {
+    INCLUDEPATH += /Library/Frameworks/SDL.framework/Headers
+}
+macx {
+    SDL = -F/Library/Frameworks
+    # Add SDL to CFLAGS fixes build problems on mac
+    QMAKE_CFLAGS += $$SDL
+    QMAKE_CXXFLAGS += $$SDL
+    # Let the linker know where to find the frameworks
+    LIBS += $$SDL
+}
+
+
 HEADERS += gcscontrolgadget.h \
     gcscontrolgadgetconfiguration.h \
     gcscontrolgadgetoptionspage.h

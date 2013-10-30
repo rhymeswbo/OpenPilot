@@ -1,5 +1,19 @@
+QMAKE_CC      = /usr/bin/gcc
+QMAKE_CXX     = /usr/bin/g++
+QMAKE_LINK    = /usr/bin/g++
+
 TEMPLATE = lib
 TARGET = opHID
+;macx { 
+    ;;FRAMEW = -F/System/Library/Frameworks \
+            ;;-F/System/Library/Frameworks/IOKit.framework
+    ;FRAMEW = -F/System/Library/Frameworks
+    ;QMAKE_LFLAGS += -v -F/System/Library/Frameworks
+    ;QMAKE_CFLAGS += $$FRAMEW
+    ;QMAKE_CXXFLAGS += $$FRAMEW
+    ;LIBS += -F/System/Library/Frameworks
+
+;}
 
 include(../../openpilotgcsplugin.pri)
 include(ophid_dependencies.pri)
@@ -34,14 +48,14 @@ win32 {
 macx { 
     SOURCES += src/ophid_usbmon_mac.cpp \
                hidapi/mac/hid.c
-    SDK = /Developer/SDKs/MacOSX10.5.sdk
+    SDK = /Developer/SDKs/MacOSX10.8.sdk
     ARCH = -mmacosx-version-min=10.5 \
            -arch ppc \
            -arch i386
     LIBS += $(ARCH) \
             -Wl,-syslibroot,$(SDK) \
-            -framework IOKit \
-            -framework CoreFoundation
+            -framework CoreFoundation \
+            -framework IOKit
 }
 
 linux-g++ {
