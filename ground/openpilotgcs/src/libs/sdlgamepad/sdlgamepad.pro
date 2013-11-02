@@ -21,6 +21,7 @@
 TEMPLATE     = lib
 TARGET      = sdlgamepad
 DEFINES     += SDLGAMEPAD_LIBRARY
+QMAKE_LFLAGS += -F/Library/Frameworks
 
 include(../../openpilotgcslibrary.pri)
 
@@ -28,7 +29,8 @@ SOURCES     += sdlgamepad.cpp
 HEADERS     += sdlgamepad.h \
                sdlgamepad_global.h
 
-macx:LIBS   += -framework SDL
+mac:INCLUDEPATH += "/usr/local/include"
+macx:LIBS   += -L/usr/local/lib -framework SDL
 !macx:LIBS  += -lSDL
 
 OTHER_FILES += COPYING \

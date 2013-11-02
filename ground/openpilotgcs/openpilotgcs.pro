@@ -9,6 +9,7 @@ contains(QT_VERSION, ^4\\.[0-7]\\..*) {
     error("Cannot build OpenPilot GCS with Qt version $${QT_VERSION}. Use at least Qt 4.8!")
 }
 
+cache()
 include(openpilotgcs.pri)
 
 TEMPLATE  = subdirs
