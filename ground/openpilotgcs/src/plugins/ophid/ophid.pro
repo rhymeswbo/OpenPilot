@@ -1,19 +1,5 @@
-QMAKE_CC      = /usr/bin/gcc
-QMAKE_CXX     = /usr/bin/g++
-QMAKE_LINK    = /usr/bin/g++
-
 TEMPLATE = lib
 TARGET = opHID
-;macx { 
-    ;;FRAMEW = -F/System/Library/Frameworks \
-            ;;-F/System/Library/Frameworks/IOKit.framework
-    ;FRAMEW = -F/System/Library/Frameworks
-    ;QMAKE_LFLAGS += -v -F/System/Library/Frameworks
-    ;QMAKE_CFLAGS += $$FRAMEW
-    ;QMAKE_CXXFLAGS += $$FRAMEW
-    ;LIBS += -F/System/Library/Frameworks
-
-;}
 
 include(../../openpilotgcsplugin.pri)
 include(ophid_dependencies.pri)

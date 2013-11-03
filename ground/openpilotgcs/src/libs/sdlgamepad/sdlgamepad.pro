@@ -22,9 +22,8 @@ TEMPLATE     = lib
 TARGET      = sdlgamepad
 DEFINES     += SDLGAMEPAD_LIBRARY
 macx {
+    # Workaround to ensure that SDL framework and associated header files are found
     INCLUDEPATH += /Library/Frameworks/SDL.framework/Headers
-}
-macx {
     SDL = -F/Library/Frameworks
     # Add SDL to CFLAGS fixes build problems on mac
     QMAKE_CFLAGS += $$SDL
@@ -39,7 +38,6 @@ SOURCES     += sdlgamepad.cpp
 HEADERS     += sdlgamepad.h \
                sdlgamepad_global.h
 
-;macx:LIBS   += -framework SDL
 macx:LIBS   += -framework OpenGL -framework SDL -framework Cocoa
 !macx:LIBS  += -lSDL
 

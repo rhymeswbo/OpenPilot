@@ -4,17 +4,7 @@ include(../../openpilotgcsplugin.pri)
 include(../../plugins/coreplugin/coreplugin.pri)
 include(../../libs/glc_lib/glc_lib.pri)
 include(modelview_dependencies.pri)
-macx {
-    INCLUDEPATH += /Library/Frameworks/SDL.framework/Headers
-}
-macx {
-    SDL = -F/Library/Frameworks
-    # Add SDL to CFLAGS fixes build problems on mac
-    QMAKE_CFLAGS += $$SDL
-    QMAKE_CXXFLAGS += $$SDL
-    # Let the linker know where to find the frameworks
-    LIBS += $$SDL
-}
+
 INCLUDEPATH += ../../libs/glc_lib
 HEADERS += modelviewplugin.h \
     modelviewgadgetconfiguration.h \
