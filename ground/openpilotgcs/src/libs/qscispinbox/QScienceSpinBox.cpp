@@ -5,6 +5,9 @@
 
 #include <limits>
 
+#define QT_NO_DEBUG_OUTPUT
+#define QT_NO_WARNING_OUTPUT
+
 // #define QSPINBOX_QSBDEBUG
 #ifdef QSPINBOX_QSBDEBUG
 #  define QSBDEBUG qDebug
@@ -13,7 +16,6 @@
     if (false) \
         qDebug
 #endif
-
 
 QScienceSpinBox::QScienceSpinBox(QWidget *parent)
     : QDoubleSpinBox(parent)
