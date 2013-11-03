@@ -19,12 +19,16 @@ SOURCES += src/ophid_plugin.cpp \
 FORMS += 
 RESOURCES += 
 DEFINES += OPHID_LIBRARY
+
 OTHER_FILES += opHID.pluginspec
 
 INCLUDEPATH += ./inc
+INCPATH += -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/IOKit.framework/Versions/A/Headers/
+QMAKE_LFLAGS += -F/System/Library/Frameworks/  
+LIBS += -framework IOKit -framework CoreFoundation
+QT += widgets
 
 # Platform Specific
-
 win32 { 
     SOURCES += src/ophid_usbmon_win.cpp \
                hidapi/windows/hid.c
@@ -34,8 +38,8 @@ win32 {
 macx { 
     SOURCES += src/ophid_usbmon_mac.cpp \
                hidapi/mac/hid.c
-    SDK = /Developer/SDKs/MacOSX10.5.sdk
-    ARCH = -mmacosx-version-min=10.5 \
+    SDK = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/
+    ARCH = -mmacosx-version-min=10.9 \
            -arch ppc \
            -arch i386
     LIBS += $(ARCH) \
