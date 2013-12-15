@@ -33,6 +33,7 @@
 #include <QList>
 #include "aerosimrcdatastruct.h"
 
+#define MAX_PATH 260
 #define SIM_DLL_EXPORT extern "C" __declspec(dllexport)
 
 SIM_DLL_EXPORT void AeroSIMRC_Plugin_ReportStructSizes(

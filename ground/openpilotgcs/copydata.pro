@@ -33,7 +33,6 @@ equals(copydata, 1) {
                   Qt5MultimediaWidgets$${DS}.dll \
                   Qt5Quick$${DS}.dll \
                   Qt5Qml$${DS}.dll \
-                  Qt5V8$${DS}.dll \
                   icuin51.dll \
                   icudt51.dll \
                   icuuc51.dll
@@ -94,17 +93,16 @@ equals(copydata, 1) {
 
         # Remove the few unwanted DDLs after whole dir copy
         QT_QUICK2_DELS = qtquick/controls/qtquickcontrolsplugin \
-        qtquick/controls/private/qtquickcontrolsprivateplugin \
         qtquick/dialogs/dialogplugin
 
         CONFIG(debug, debug|release) {
             for(delfile, QT_QUICK2_DELS) {
-            data_copy.commands += $(DEL_FILE) $$targetPath(\"$$GCS_APP_PATH/$${delfile}.dll\") $$addNewline()
+                data_copy.commands += $(DEL_FILE) $$targetPath(\"$$GCS_APP_PATH/$${delfile}.dll\") $$addNewline()
             } 
         }
         CONFIG(release, debug|release) {
             for(delfile, QT_QUICK2_DELS) {
-            data_copy.commands += $(DEL_FILE) $$targetPath(\"$$GCS_APP_PATH/$${delfile}d.dll\") $$addNewline()
+                data_copy.commands += $(DEL_FILE) $$targetPath(\"$$GCS_APP_PATH/$${delfile}d.dll\") $$addNewline()
             }
         }
 
