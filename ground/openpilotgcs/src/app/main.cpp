@@ -231,8 +231,9 @@ void mainMessageOutput(QtMsgType type, const QMessageLogContext &context, const 
             out << "FTL: ";
             break;
         }
-
-        out << msg << '\n';
+        out << msg;
+        out << " (" << context.function << ':' << context.line << ")";
+        out << endl;
         out.flush();
     }
 }
@@ -457,7 +458,7 @@ int main(int argc, char * *argv)
     systemInit();
 
 #ifdef QT_NO_DEBUG
-// logInit();
+    // logInit();
 #endif
 
     // create application
