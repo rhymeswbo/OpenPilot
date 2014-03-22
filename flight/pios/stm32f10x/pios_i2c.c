@@ -89,17 +89,13 @@ static void go_bus_error(struct pios_i2c_adapter *i2c_adapter);
 static void go_stopping(struct pios_i2c_adapter *i2c_adapter);
 static void go_stopped(struct pios_i2c_adapter *i2c_adapter);
 static void go_starting(struct pios_i2c_adapter *i2c_adapter);
-static void go_r_any_txn_addr(struct pios_i2c_adapter *i2c_adapter);
-static void go_r_more_txn_pre_one(struct pios_i2c_adapter *i2c_adapter);
-static void go_r_any_txn_pre_first(struct pios_i2c_adapter *i2c_adapter);
-static void go_r_any_txn_pre_middle(struct pios_i2c_adapter *i2c_adapter);
-static void go_r_more_txn_pre_last(struct pios_i2c_adapter *i2c_adapter);
-static void go_r_any_txn_post_last(struct pios_i2c_adapter *i2c_adapter);
 
 static void go_r_any_txn_addr(struct pios_i2c_adapter *i2c_adapter);
+static void go_r_more_txn_pre_one(struct pios_i2c_adapter *i2c_adapter);
 static void go_r_last_txn_pre_one(struct pios_i2c_adapter *i2c_adapter);
 static void go_r_any_txn_pre_first(struct pios_i2c_adapter *i2c_adapter);
 static void go_r_any_txn_pre_middle(struct pios_i2c_adapter *i2c_adapter);
+static void go_r_more_txn_pre_last(struct pios_i2c_adapter *i2c_adapter);
 static void go_r_last_txn_pre_last(struct pios_i2c_adapter *i2c_adapter);
 static void go_r_any_txn_post_last(struct pios_i2c_adapter *i2c_adapter);
 
