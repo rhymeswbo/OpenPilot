@@ -414,6 +414,7 @@ static void go_starting(struct pios_i2c_adapter *i2c_adapter)
         i2c_adapter->last_byte   = &(i2c_adapter->active_txn->buf[i2c_adapter->active_txn->len - 1]);
     } else {
         // No Data available => Empty read/write
+        // FIXME: Address is not being sent at all
         i2c_adapter->last_byte   = NULL;
         i2c_adapter->active_byte = i2c_adapter->last_byte + 1;
     }
