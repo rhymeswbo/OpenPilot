@@ -553,22 +553,12 @@ static int16_t scaleChannel(float value, int16_t max, int16_t min, int16_t neutr
         valueScaled = (int16_t)(value * ((float)(neutral - min))) + neutral;
     }
 
-    if (max > min) {
-        if (valueScaled > max) {
-            valueScaled = max;
-        }
-        if (valueScaled < min) {
-            valueScaled = min;
-        }
-    } else {
-        if (valueScaled < max) {
-            valueScaled = max;
-        }
-        if (valueScaled > min) {
-            valueScaled = min;
-        }
-    }
-
+    const int16_t max_ = MAX(max,min);
+    const int16_t min_ = MIN(max,min);
+    
+    valueScaled = MIN(valueScaled, max_);
+    valueScaled = MAX(valueScaled, min_);
+    
     return valueScaled;
 }
 
