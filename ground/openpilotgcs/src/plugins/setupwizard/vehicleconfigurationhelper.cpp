@@ -222,6 +222,9 @@ void VehicleConfigurationHelper::applyVehicleConfiguration()
         case VehicleConfigurationSource::FIXED_WING_ELEVON:
             setupElevon();
             break;
+        case VehicleConfigurationSource::FIXED_WING_VTAIL:
+//            setupVtail();
+            break;
         default:
             break;
         }
@@ -1338,15 +1341,15 @@ void VehicleConfigurationHelper::setupElevon()
     channels[1].type      = MIXER_TYPE_SERVO;
     channels[1].throttle1 = 0;
     channels[1].throttle2 = 0;
-    channels[1].roll      = -127;
-    channels[1].pitch     = 127;
+    channels[1].roll      = -100;
+    channels[1].pitch     = 50;
     channels[1].yaw = 0;
 
     channels[2].type      = MIXER_TYPE_SERVO;
     channels[2].throttle1 = 0;
     channels[2].throttle2 = 0;
-    channels[2].roll      = 127;
-    channels[2].pitch     = -127;
+    channels[2].roll      = 100;
+    channels[2].pitch     = -50;
     channels[2].yaw = 0;
 
     channels[3].type      = MIXER_TYPE_SERVO;
@@ -1368,7 +1371,7 @@ void VehicleConfigurationHelper::setupElevon()
     guiSettings.fixedwing.FixedWingRoll2  = 3;
 
     applyMixerConfiguration(channels);
-    applyMultiGUISettings(SystemSettings::AIRFRAMETYPE_FIXEDWINGVTAIL, guiSettings);
+    applyMultiGUISettings(SystemSettings::AIRFRAMETYPE_FIXEDWINGELEVON, guiSettings);
 }
 
 void VehicleConfigurationHelper::setupAileron()
