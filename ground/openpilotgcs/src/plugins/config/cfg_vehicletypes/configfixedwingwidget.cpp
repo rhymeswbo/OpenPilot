@@ -321,7 +321,7 @@ QString ConfigFixedWingWidget::updateConfigObjectsFromWidgets()
             { 0,   0,  0 },
             { 0,   0,  0 }
         };
-        setupFixedWingMixer(mixerMatrix);
+        setupFixedWingElevonMixer(mixerMatrix);
 
       	m_aircraft->fwStatusLabel->setText(tr("Configuration OK"));
 
@@ -517,9 +517,24 @@ bool ConfigFixedWingWidget::setupFrameElevon(QString airframeType)
 }
 
 /**
+   Helper function: setupElevonServo
+ */
+void ConfigFixedWingWidget::setupElevonServo(int channel, double pitch, double roll)
+{
+    UAVDataObject *mixer = dynamic_cast<UAVDataObject *>(getObjectManager()->getObject(QString("MixerSettings")));
+
+    Q_ASSERT(mixer);
+
+    setMixerType(mixer, channel, VehicleConfig::MIXERTYPE_SERVO);
+
+    setMixerVectorValue(mixer, channel, VehicleConfig::MIXERVECTOR_ROLL, roll * 127);
+    setMixerVectorValue(mixer, channel, VehicleConfig::MIXERVECTOR_PITCH, pitch * 127);
+}
+
+/**
    This function sets up the elevon fixed wing mixer values.
  */
-bool ConfigFixedWingWidget::setupFixedWingMixer(double mixerFactors[8][3])
+bool ConfigFixedWingWidget::setupFixedWingElevonMixer(double mixerFactors[8][3])
 {
     UAVDataObject *mixer = dynamic_cast<UAVDataObject *>(getObjectManager()->getObject(QString("MixerSettings")));
 
@@ -527,24 +542,19 @@ bool ConfigFixedWingWidget::setupFixedWingMixer(double mixerFactors[8][3])
     resetMotorAndServoMixers(mixer);
 
     // and enable only the relevant channels:
-//    double pFactor = (double)m_aircraft->fwPitchMixLevel->value() / 100.0;
-//    double rFactor = (double)m_aircraft->fwRollMixLevel->value() / 100.0;
-    //invertMotors = m_aircraft->MultirotorRevMixerCheckBox->isChecked();
-//    double yFactor = (double)m_aircraft->fwYawMixLevel->value() / 100.0;
+    double pFactor = (double)m_aircraft->elevonSlider1->value() / 100.0;
+    double rFactor = (double)m_aircraft->elevonSlider2->value() / 100.0;
 
     QList<QComboBox *> mmList;
     mmList << m_aircraft->fwEngineChannelBox << m_aircraft->fwAileron1ChannelBox
            << m_aircraft->fwAileron2ChannelBox << m_aircraft->fwElevator1ChannelBox
-           << m_aircraft->fwElevator2ChannelBox << m_aircraft->fwRudder1ChannelBox
-           << m_aircraft->fwRudder2ChannelBox;
+           << m_aircraft->fwElevator2ChannelBox;
 
     for (int i = 0; i < 8; i++) {
         if (mmList.at(i)->isEnabled()) {
             int channel = mmList.at(i)->currentIndex() - 1;
             if (channel > -1) {
-		  qDebug() << "code needs to be written here!";
-//                setupQuadMotor(channel, mixerFactors[i][0] * pFactor, rFactor * mixerFactors[i][1],
-//                               yFactor * mixerFactors[i][2]);
+		  setupElevonServo(channel, mixerFactors[i][0] * pFactor, rFactor * mixerFactors[i][1]);
             }
         }
     }
