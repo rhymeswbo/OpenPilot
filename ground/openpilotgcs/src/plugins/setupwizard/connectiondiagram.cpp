@@ -124,9 +124,12 @@ void ConnectionDiagram::setupGraphicsScene()
                 break;
             case VehicleConfigurationSource::FIXED_WING_ELEVON:
                 elementsToShow << "elevon";
+<<<<<<< HEAD
                 break;
             case VehicleConfigurationSource::FIXED_WING_VTAIL:
                 elementsToShow << "vtail";
+=======
+>>>>>>> 75585097203190fc8fa373c0bf597aa6e62d7d54
                 break;
             default:
                 break;
@@ -168,7 +171,8 @@ void ConnectionDiagram::setupGraphicsScene()
 void ConnectionDiagram::setupGraphicsSceneItems(QList<QString> elementsToShow)
 {
     qreal z = 0;
-    QRectF backgBounds = m_renderer->boundsOnElement("background");
+
+    // QRectF backgBounds = m_renderer->boundsOnElement("background");
 
     foreach(QString elementId, elementsToShow) {
         if (m_renderer->elementExists(elementId)) {

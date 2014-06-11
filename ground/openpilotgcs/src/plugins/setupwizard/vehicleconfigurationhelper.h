@@ -103,7 +103,10 @@ private:
     void setupQuadCopter();
     void setupHexaCopter();
     void setupOctoCopter();
+<<<<<<< HEAD
     void setupVtail();
+=======
+>>>>>>> 75585097203190fc8fa373c0bf597aa6e62d7d54
     void setupElevon();
     void setupAileron();
 

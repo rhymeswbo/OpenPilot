@@ -138,8 +138,11 @@ void ConfigFixedWingWidget::setupUI(QString frameType)
 
         m_aircraft->elevonSlider1->setEnabled(false);
         m_aircraft->elevonSlider2->setEnabled(false);
+<<<<<<< HEAD
     } else if (frameType == "FixedWingVtail" || frameType == "Vtail") {
 	// do nothing for now
+=======
+>>>>>>> 75585097203190fc8fa373c0bf597aa6e62d7d54
     } else if (frameType == "FixedWingElevon" || frameType == "Elevon") {
         plane->setElementId("elevon");
         setComboCurrentIndex(m_aircraft->fixedWingType, m_aircraft->fixedWingType->findText("Elevon"));
@@ -184,9 +187,13 @@ void ConfigFixedWingWidget::setupEnabledControls(QString frameType)
         }
     }
 
+<<<<<<< HEAD
     if (frameType == "Vtail" || frameType == "vtail") {
         // enableComboBoxes(this, CHANNELBOXNAME, 3, true);
     } else if (frameType == "Elevon" || frameType == "Elevon") {
+=======
+    if (frameType == "Elevon" || frameType == "elevon") {
+>>>>>>> 75585097203190fc8fa373c0bf597aa6e62d7d54
         enableComboBoxes(this, CHANNELBOXNAME, 3, true);
     } else if (frameType == "aileron" || frameType == "Elevator aileron rudder") {
         enableComboBoxes(this, CHANNELBOXNAME, 4, true);
@@ -467,7 +474,7 @@ bool ConfigFixedWingWidget::setupFrameElevon(QString airframeType)
     resetActuators(&config);
 
     config.fixedwing.FixedWingPitch1   = m_aircraft->fwElevator1ChannelBox->currentIndex();
-    config.fixedwing.FixedWingPitch2   = m_aircraft->fwElevator2ChannelBox->currentIndex();
+    config.fixedwing.FixedWingPitch2   = m_aircraft->fwElevator2ChannelBox->currentIndex();    
     config.fixedwing.FixedWingRoll1    = m_aircraft->fwAileron1ChannelBox->currentIndex();
     config.fixedwing.FixedWingRoll2    = m_aircraft->fwAileron2ChannelBox->currentIndex();
     config.fixedwing.FixedWingThrottle = m_aircraft->fwEngineChannelBox->currentIndex();
@@ -485,6 +492,8 @@ bool ConfigFixedWingWidget::setupFrameElevon(QString airframeType)
 
     // 1. Assign the servo/motor/none for each channel
 
+    double value;
+
     // motor
     int channel = m_aircraft->fwEngineChannelBox->currentIndex() - 1;
     setMixerType(mixer, channel, VehicleConfig::MIXERTYPE_MOTOR);
@@ -494,6 +503,7 @@ bool ConfigFixedWingWidget::setupFrameElevon(QString airframeType)
     channel = m_aircraft->fwAileron1ChannelBox->currentIndex() - 1;
     if (channel > -1) {
         setMixerType(mixer, channel, VehicleConfig::MIXERTYPE_SERVO);
+<<<<<<< HEAD
         setMixerVectorValue(mixer, channel, VehicleConfig::MIXERVECTOR_ROLL, 127);
 
         channel = m_aircraft->fwAileron2ChannelBox->currentIndex() - 1;
@@ -506,17 +516,33 @@ bool ConfigFixedWingWidget::setupFrameElevon(QString airframeType)
     if (channel > -1) {
         setMixerType(mixer, channel, VehicleConfig::MIXERTYPE_SERVO);
         setMixerVectorValue(mixer, channel, VehicleConfig::MIXERVECTOR_PITCH, 127);
+=======
+        value   = (double)(m_aircraft->elevonSlider2->value() * 1.27);
+        setMixerVectorValue(mixer, channel, VehicleConfig::MIXERVECTOR_PITCH, value);
+        value   = (double)(m_aircraft->elevonSlider1->value() * 1.27);
+        setMixerVectorValue(mixer, channel, VehicleConfig::MIXERVECTOR_ROLL, value);
+>>>>>>> 75585097203190fc8fa373c0bf597aa6e62d7d54
 
-        channel = m_aircraft->fwElevator2ChannelBox->currentIndex() - 1;
+
+        channel = m_aircraft->fwAileron2ChannelBox->currentIndex() - 1;
         setMixerType(mixer, channel, VehicleConfig::MIXERTYPE_SERVO);
+<<<<<<< HEAD
         setMixerVectorValue(mixer, channel, VehicleConfig::MIXERVECTOR_PITCH, -127);
+=======
+        value   = (double)(m_aircraft->elevonSlider2->value() * 1.27);
+        setMixerVectorValue(mixer, channel, VehicleConfig::MIXERVECTOR_PITCH, value);
+        value   = (double)(m_aircraft->elevonSlider1->value() * 1.27);
+        setMixerVectorValue(mixer, channel, VehicleConfig::MIXERVECTOR_ROLL, -value);
+>>>>>>> 75585097203190fc8fa373c0bf597aa6e62d7d54
     }
 
     m_aircraft->fwStatusLabel->setText("Mixer generated");
     return true;
+
 }
 
 /**
+<<<<<<< HEAD
    Helper function: setupElevonServo
  */
 void ConfigFixedWingWidget::setupElevonServo(int channel, double pitch, double roll)
@@ -532,6 +558,8 @@ void ConfigFixedWingWidget::setupElevonServo(int channel, double pitch, double r
 }
 
 /**
+=======
+>>>>>>> 75585097203190fc8fa373c0bf597aa6e62d7d54
    This function sets up the elevon fixed wing mixer values.
  */
 bool ConfigFixedWingWidget::setupFixedWingElevonMixer(double mixerFactors[8][3])
@@ -608,21 +636,20 @@ bool ConfigFixedWingWidget::throwConfigError(QString airframeType)
             m_aircraft->fwEngineChannelBox->setItemData(0, 0, Qt::DecorationRole); // Reset color palettes
         }
 
-        if (m_aircraft->fwElevator1ChannelBox->currentText() == "None") {
-            m_aircraft->fwElevator1ChannelBox->setItemData(0, pixmap, Qt::DecorationRole); // Set color palettes
+        if (m_aircraft->fwAileron1ChannelBox->currentText() == "None") {
+            m_aircraft->fwAileron1ChannelBox->setItemData(0, pixmap, Qt::DecorationRole); // Set color palettes
             error = true;
         } else {
-            m_aircraft->fwElevator1ChannelBox->setItemData(0, 0, Qt::DecorationRole); // Reset color palettes
+            m_aircraft->fwAileron1ChannelBox->setItemData(0, 0, Qt::DecorationRole); // Reset color palettes
         }
 
-        if (m_aircraft->fwElevator2ChannelBox->currentText() == "None") {
-            m_aircraft->fwElevator2ChannelBox->setItemData(0, pixmap, Qt::DecorationRole); // Set color palettes
+        if (m_aircraft->fwAileron2ChannelBox->currentText() == "None") {
+            m_aircraft->fwAileron2ChannelBox->setItemData(0, pixmap, Qt::DecorationRole); // Set color palettes
             error = true;
         } else {
-            m_aircraft->fwElevator2ChannelBox->setItemData(0, 0, Qt::DecorationRole); // Reset color palettes
+            m_aircraft->fwAileron2ChannelBox->setItemData(0, 0, Qt::DecorationRole); // Reset color palettes
         }
     }
-
     if (error) {
         m_aircraft->fwStatusLabel->setText(QString("<font color='red'>ERROR: Assign all necessary channels</font>"));
     }

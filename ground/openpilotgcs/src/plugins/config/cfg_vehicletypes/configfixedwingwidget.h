@@ -66,9 +66,14 @@ private:
     virtual void resetActuators(GUIConfigDataUnion *configData);
 
     bool setupFrameFixedWing(QString airframeType);
+<<<<<<< HEAD
     bool setupFrameVtail(QString airframeType);
     bool setupFrameElevon(QString airframeType);
     bool setupFixedWingElevonMixer(double mixerFactors[8][3]);
+=======
+    bool setupFrameElevon(QString airframeType);
+    bool setupFixedWingMixer(double mixerFactors[8][3]);
+>>>>>>> 75585097203190fc8fa373c0bf597aa6e62d7d54
     void setupMotors(QList<QString> motorList);
     void setupElevonServo(int channel, double roll, double pitch);
 
