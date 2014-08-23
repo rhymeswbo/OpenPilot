@@ -98,11 +98,16 @@ macx {
         GCS_QT_QML_PATH = $$GCS_BUILD_TREE/$$GCS_LIBRARY_BASENAME/qt5/qml
 
         OP_TOOLS_DIR = $$clean_path($$GCS_SOURCE_TREE/../../tools)
-        INSTALL_LIBS = $$clean_path($$absolute_path($$[QT_INSTALL_LIBS]))
-        contains(INSTALL_LIBS, $$OP_TOOLS_DIR*) {
+        INSTALL_LIBS_UP4 = $$clean_path($$[QT_INSTALL_LIBS]/../../../..)
+        equals(INSTALL_LIBS_UP4, $$OP_TOOLS_DIR) {
             copyqt = 1
         } else {
-            copyqt = 0
+            FORCE_COPY_QT = $$(FORCE_COPY_QT)
+            isEmpty(FORCE_COPY_QT) {
+                copyqt = 0
+            } else {
+                copyqt = 1
+            }
         }
     }
     GCS_LIBRARY_PATH = $$GCS_BUILD_TREE/$$GCS_LIBRARY_BASENAME/openpilotgcs
