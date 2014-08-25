@@ -540,7 +540,7 @@ qt_sdk_distclean:
 endif
 
 ifeq ($(shell [ -d "$(QT_SDK_DIR)" ] && $(ECHO) "exists"), exists)
-    export QMAKE := $(QT_SDK_PREFIX)/5.2.1/clang_63/bin/qmake
+    export QMAKE := $(QT_SDK_PREFIX)/5.2.1/clang_64/bin/qmake
 
     # set Qt library search path
     ifeq ($(UNAME), Windows)
