@@ -35,6 +35,8 @@ USE_DSP_LIB ?= NO
 #MODULES += Airspeed
 #MODULES += AltitudeHold
 #MODULES += Stabilization
+MODULES += Notify 
+MODULES += VtolPathFollower
 MODULES += ManualControl
 MODULES += Actuator
 MODULES += GPS
@@ -86,6 +88,7 @@ ifndef TESTAPP
 	SRC += $(FLIGHTLIB)/plans.c
     SRC += $(FLIGHTLIB)/WorldMagModel.c
     SRC += $(FLIGHTLIB)/insgps13state.c
+    SRC += $(FLIGHTLIB)/lednotification.c    
 
     ## UAVObjects
     include ./UAVObjects.inc
