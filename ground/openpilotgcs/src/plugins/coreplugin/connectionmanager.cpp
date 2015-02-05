@@ -465,7 +465,7 @@ void ConnectionManager::updateConnectionDropdown()
             }
             if (m_mainWindow->generalSettings()->autoConnect() && polling) {
                 qDebug() << "Automatically opening device";
-                connectDevice(d);
+                //connectDevice(d);
                 qDebug() << "ConnectionManager::updateConnectionDropdown autoconnected USB device";
             }
         }
