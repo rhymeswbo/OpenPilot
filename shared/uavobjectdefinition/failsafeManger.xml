@@ -1,0 +1,25 @@
+<xml>
+    <object name="failsafeManagerControls" singleinstance="true" settings="true" category="State">
+        <description>Settings for failsafe manager</description>
+
+        <field name="minFailsafeLevel" units="" type="int8" elements="1" defaultvalue="1" options="1,2,3,4,5"/>
+        <field name="maxFailsafeLevel" units="" type="int8" elements="1" defaultvalue="5" options="1,2,3,4,5"/>
+
+
+      	<access gcs="readwrite" flight="readwrite"/>
+        <telemetrygcs acked="true" updatemode="onchange" period="0"/>
+        <telemetryflight acked="true" updatemode="onchange" period="1000"/>
+        <logging updatemode="manual" period="0"/>
+    </object>
+
+    <object name="failsafeManagerStatus" singleinstance="true" settings="false" category="Control">
+        <description>Current State of Failsafe Manager</description>
+        <field name="failsafeLevel" units="" type="int8" elements="1" defaultvalue="0" options="1,2,3,4,5"/>
+        <field name="failsafeTimeStamp" units="" type="" elements="1" defaultvalue="0"/>
+
+        <access gcs="readwrite" flight="readwrite"/>
+        <telemetrygcs acked="false" updatemode="manual" period="0"/>
+        <telemetryflight acked="false" updatemode="periodic" period="1000"/>
+        <logging updatemode="manual" period="0"/>
+    </object>
+</xml>
