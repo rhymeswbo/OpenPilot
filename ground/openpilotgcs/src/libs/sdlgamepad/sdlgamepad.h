@@ -222,7 +222,17 @@ public slots:
     bool setGamepad(qint16 index);
 
 private:
-
+    /**
+     * Get axes number for SDL driver give the OP axis number
+     *
+     * 
+     *
+     * @see run()
+     * @see axesValues()
+     * @see updaateAxes()
+     */
+    int mapAxes(int OPAxes);
+    int mapButtons(int OPButtons);
     /**
      * Get new axes information from the SDL system.
      *

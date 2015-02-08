@@ -138,6 +138,25 @@ void SDLGamepad::setTickRate(qint16 ms)
 }
 
 /**********************************************************************/
+int SDLGamepad::mapAxes(int OPAxes)
+{
+    //input OP-GCS-ch  output Xbox-ch
+    switch (OPAxes) {
+        case 0: return 2; //roll 
+        case 1: return 3; //pitch
+        case 2: return 1; //throttle
+        case 3: return 0; //yaw
+        case 4: return 4;
+        case 5: return 5;
+        case 6: return 6;
+        case 7: return 7;
+        case 8: return 8;
+        case 9: return 9; 
+        default: return 4;       
+    }
+
+}
+/**********************************************************************/
 void SDLGamepad::updateAxes()
 {
     if (priv->gamepad) {
@@ -145,6 +164,7 @@ void SDLGamepad::updateAxes()
         SDL_JoystickUpdate();
 
         for (qint8 i = 0; i < axes; i++) {
+            //qint16 value = SDL_JoystickGetAxis(priv->gamepad, mapAxes(i));
             qint16 value = SDL_JoystickGetAxis(priv->gamepad, i);
 
             if (value > -NULL_RANGE && value < NULL_RANGE) {
@@ -158,6 +178,29 @@ void SDLGamepad::updateAxes()
     }
 }
 
+
+/**********************************************************************/
+int SDLGamepad::mapButtons(int OPButtons)
+{
+    //input OP-GCS-ch  output Xbox-ch
+    switch (OPButtons) {
+        case 0: return 0; //up
+        case 1: return 1; //down
+        case 2: return 2; //left
+        case 3: return 3; //right
+        case 4: return 4; //start
+        case 5: return 5; //select
+        case 6: return 8; //top left
+        case 7: return 9; //top right
+        case 8: return 10; //xbox
+        case 9: return 11; //A
+        case 10: return 12; //B
+        case 11: return 13; //X
+        case 12: return 14; //Y
+        default: return 15;      
+    }
+
+}
 /**********************************************************************/
 void SDLGamepad::updateButtons()
 {
@@ -165,6 +208,7 @@ void SDLGamepad::updateButtons()
         SDL_JoystickUpdate();
 
         for (qint8 i = 0; i < buttons; i++) {
+            //qint16 state = SDL_JoystickGetButton(priv->gamepad, mapButtons(i));
             qint16 state = SDL_JoystickGetButton(priv->gamepad, i);
 
             if (buttonStates.at(i) != state) {

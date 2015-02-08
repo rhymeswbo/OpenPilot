@@ -47,7 +47,8 @@ public:
     bool getUDPControl(void);
     void setArmed(bool newState);
     bool getArmed(void);
-
+    //moved to public...
+    void selectFlightMode(int state);
 signals:
     void sticksChanged(double leftX, double leftY, double rightX, double rightY);
 
@@ -62,7 +63,7 @@ public slots:
 protected slots:
     void toggleControl(int state);
     void toggleArmed(int state);
-    void selectFlightMode(int state);
+//    void selectFlightMode(int state);
     void mccChanged(UAVObject *);
     void toggleUDPControl(int state);
 

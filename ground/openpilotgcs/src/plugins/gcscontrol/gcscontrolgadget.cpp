@@ -337,80 +337,76 @@ double GCSControlGadget::constrain(double value)
     return value;
 }
 
+#define GRHardMapOfButtons 1
+
+#define BModeToggleGCSControl 1
+#define BModeToggleARM 2
+#define BModeFlightMode1 3
+#define BModeFlightMode2 4
+#define BModeFlightMode3 5
+#define BModeFlightMode4 6
+#define BModeFlightMode5 7
+#define BModeFlightMode6 8
+
+static int GRButtonFunctionMap[] = 
+    {0,0,0,0, 
+    BModeToggleARM,BModeToggleGCSControl,0,0, 
+    0,0,0,BModeFlightMode1,
+    BModeFlightMode2,BModeFlightMode3,BModeFlightMode4,0};
+/*
+    up, down, left, right
+    back, start, ?, ?
+    topLeft, topRight, MS360, A
+    B, X, Y, ?
+*/
+
 void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
 {
-    if ((buttonSettings[number].ActionID > 0) && (buttonSettings[number].FunctionID > 0) && (pressed)) { // this button is configured
+    //printf("%d \n ",number);
+    if (GRButtonFunctionMap[number]>0 && pressed){
+
         ExtensionSystem::PluginManager *pm  = ExtensionSystem::PluginManager::instance();
         UAVObjectManager *objManager = pm->getObject<UAVObjectManager>();
         UAVDataObject *manualControlCommand = dynamic_cast<UAVDataObject *>(objManager->getObject(QString("ManualControlCommand")));
         bool currentCGSControl = ((GCSControlGadgetWidget *)m_widget)->getGCSControl();
-        bool currentUDPControl = ((GCSControlGadgetWidget *)m_widget)->getUDPControl();
+  
 
-        switch (buttonSettings[number].ActionID) {
-        case 1: // increase
+        switch (GRButtonFunctionMap[number]){
+        case BModeToggleARM: // Armed
             if (currentCGSControl) {
-                switch (buttonSettings[number].FunctionID) {
-                case 1: // Roll
-                    manualControlCommand->getField("Roll")->setValue(bound(manualControlCommand->getField("Roll")->getValue().toDouble() + buttonSettings[number].Amount));
-                    break;
-                case 2: // Pitch
-                    manualControlCommand->getField("Pitch")->setValue(bound(manualControlCommand->getField("Pitch")->getValue().toDouble() + buttonSettings[number].Amount));
-                    break;
-                case 3: // Yaw
-                    manualControlCommand->getField("Yaw")->setValue(wrap(manualControlCommand->getField("Yaw")->getValue().toDouble() + buttonSettings[number].Amount));
-                    break;
-                case 4: // Throttle
-                    manualControlCommand->getField("Throttle")->setValue(bound(manualControlCommand->getField("Throttle")->getValue().toDouble() + buttonSettings[number].Amount));
-                    manualControlCommand->getField("Thrust")->setValue(bound(manualControlCommand->getField("Thrust")->getValue().toDouble() + buttonSettings[number].Amount));
-                    break;
+                if (((GCSControlGadgetWidget *)m_widget)->getArmed()) {
+                    ((GCSControlGadgetWidget *)m_widget)->setArmed(false);
+                } else {
+                    ((GCSControlGadgetWidget *)m_widget)->setArmed(true);
                 }
             }
             break;
-        case 2: // decrease
-            if (currentCGSControl) {
-                switch (buttonSettings[number].FunctionID) {
-                case 1: // Roll
-                    manualControlCommand->getField("Roll")->setValue(bound(manualControlCommand->getField("Roll")->getValue().toDouble() - buttonSettings[number].Amount));
-                    break;
-                case 2: // Pitch
-                    manualControlCommand->getField("Pitch")->setValue(bound(manualControlCommand->getField("Pitch")->getValue().toDouble() - buttonSettings[number].Amount));
-                    break;
-                case 3: // Yaw
-                    manualControlCommand->getField("Yaw")->setValue(wrap(manualControlCommand->getField("Yaw")->getValue().toDouble() - buttonSettings[number].Amount));
-                    break;
-                case 4: // Throttle
-                    manualControlCommand->getField("Throttle")->setValue(bound(manualControlCommand->getField("Throttle")->getValue().toDouble() - buttonSettings[number].Amount));
-                    manualControlCommand->getField("Thrust")->setValue(bound(manualControlCommand->getField("Thrust")->getValue().toDouble() - buttonSettings[number].Amount));
-                    break;
-                }
-            }
+        case BModeToggleGCSControl: // GCS Control
+                // Toggle the GCS Control checkbox, its built in signalling will handle the update to OP
+            ((GCSControlGadgetWidget *)m_widget)->setGCSControl(!currentCGSControl);
+
             break;
-        case 3: // toggle
-            switch (buttonSettings[number].FunctionID) {
-            case 1: // Armed
-                if (currentCGSControl) {
-                    if (((GCSControlGadgetWidget *)m_widget)->getArmed()) {
-                        ((GCSControlGadgetWidget *)m_widget)->setArmed(false);
-                    } else {
-                        ((GCSControlGadgetWidget *)m_widget)->setArmed(true);
-                    }
-                }
-                break;
-            case 2: // GCS Control
-                    // Toggle the GCS Control checkbox, its built in signalling will handle the update to OP
-                ((GCSControlGadgetWidget *)m_widget)->setGCSControl(!currentCGSControl);
-
-                break;
-            case 3: // UDP Control
-                if (currentCGSControl) {
-                    ((GCSControlGadgetWidget *)m_widget)->setUDPControl(!currentUDPControl);
-                }
-
-                break;
-            }
-
+        case BModeFlightMode1:
+            ((GCSControlGadgetWidget *)m_widget)->selectFlightMode(0);
+            break;
+        case BModeFlightMode2:
+            ((GCSControlGadgetWidget *)m_widget)->selectFlightMode(1);
+            break;
+        case BModeFlightMode3:
+            ((GCSControlGadgetWidget *)m_widget)->selectFlightMode(2);
+            break;
+        case BModeFlightMode4:
+            ((GCSControlGadgetWidget *)m_widget)->selectFlightMode(3);
+            break;
+        case BModeFlightMode5:
+            ((GCSControlGadgetWidget *)m_widget)->selectFlightMode(4);
+            break;
+        case BModeFlightMode6:
+            ((GCSControlGadgetWidget *)m_widget)->selectFlightMode(5);
             break;
         }
+
+
 
         manualControlCommand->getField("Connected")->setValue("True");
         manualControlCommand->updated();
@@ -418,6 +414,22 @@ void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
     // buttonSettings[number].ActionID NIDT
     // buttonSettings[number].FunctionID -RPYTAC
     // buttonSettings[number].Amount
+}
+
+#define GRRollChannel 2
+#define GRPitchChannel 3
+#define GRYawChannel 0
+#define GRThrottleChannel 1
+#define GRAuxThrottleUpChannel 4
+#define GRAuxThrottleDownChannel 5
+#define GRStickDeadZone 0.1
+#define GRMaxRCValue 32767
+inline double GRApplyDeadZone(double rawValue){
+    int sign = (rawValue >=0)? 1 : -1;
+    double DZScaled = GRStickDeadZone * GRMaxRCValue;
+    if(abs(rawValue) > DZScaled) return (sign * (abs(rawValue) - DZScaled));
+    else return 0;
+
 }
 
 void GCSControlGadget::axesValues(QListInt16 values)
@@ -430,33 +442,15 @@ void GCSControlGadget::axesValues(QListInt16 values)
         return;
     }
 
-    double rValue = (rollChannel > -1) ? values[rollChannel] : 0;
-    double pValue = (pitchChannel > -1) ? values[pitchChannel] : 0;
-    double yValue = (yawChannel > -1) ? values[yawChannel] : 0;
-    double tValue = (throttleChannel > -1) ? values[throttleChannel] : 0;
-    double max    = 32767;
+    double rValue = GRApplyDeadZone((rollChannel > -1) ? values[GRRollChannel] : 0);
+    double pValue = GRApplyDeadZone((pitchChannel > -1) ? values[GRPitchChannel] : 0);
+    double yValue = GRApplyDeadZone((yawChannel > -1) ? values[GRYawChannel] : 0);
+    double tValue = GRApplyDeadZone((throttleChannel > -1) ? values[GRThrottleChannel] : 0);
+    double max    = GRMaxRCValue;
 
-    if (rollChannel > -1) {
-        if (channelReverse[rollChannel] == true) {
-            rValue = -rValue;
-        }
-    }
-    if (pitchChannel > -1) {
-        if (channelReverse[pitchChannel] == true) {
-            pValue = -pValue;
-        }
-    }
-    if (yawChannel > -1) {
-        if (channelReverse[yawChannel] == true) {
-            yValue = -yValue;
-        }
-    }
-    if (throttleChannel > -1) {
-        if (channelReverse[throttleChannel] == true) {
-            tValue = -tValue;
-        }
-    }
+    double GRThrottle = (values[GRAuxThrottleUpChannel] - values[GRAuxThrottleDownChannel]) / 2  ;  //left trigger is neg, right trigger is possittive 
 
+    
 
     if (joystickTime.elapsed() > JOYSTICK_UPDATE_RATE) {
         joystickTime.restart();
@@ -470,7 +464,9 @@ void GCSControlGadget::axesValues(QListInt16 values)
             sticksChangedLocally(yValue / max, -pValue / max, rValue / max, -tValue / max);
             break;
         case 2:
-            sticksChangedLocally(yValue / max, -tValue / max, rValue / max, -pValue / max);
+            //sticksChangedLocally(yValue / max, -tValue / max, rValue / max, -pValue / max);
+            sticksChangedLocally(yValue / max, -GRThrottle / max, rValue / max, -pValue  / max);
+            //printf("\nMode2 update YTRP= %02f  %02f  %02f  %02f", yValue/max, -GRThrottle/max, rValue/max, -pValue/max);
             break;
         case 3:
             sticksChangedLocally(rValue / max, -pValue / max, yValue / max, -tValue / max);
