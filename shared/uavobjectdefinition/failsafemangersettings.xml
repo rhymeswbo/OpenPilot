@@ -1,0 +1,10 @@
+<xml>
+    <object name="failsafeManagerSettings" singleinstance="true" settings="true" category="State">
+        <description>Settings for failsafe manager</description>
+        <field name="failsafeLevelEnable" units="" type="int8" elementnames="min,max" defaultvalue="1,5"/>
+      	<access gcs="readwrite" flight="readwrite"/>
+        <telemetrygcs acked="true" updatemode="onchange" period="0"/>
+        <telemetryflight acked="true" updatemode="onchange" period="0"/>
+        <logging updatemode="manual" period="0"/>
+    </object>
+</xml>

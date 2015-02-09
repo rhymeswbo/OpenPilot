@@ -128,7 +128,9 @@ HEADERS += \
     $$UAVOBJECT_SYNTHETICS/auxmagsensor.h \
     $$UAVOBJECT_SYNTHETICS/auxmagsettings.h \
     $$UAVOBJECT_SYNTHETICS/gpsextendedstatus.h \
-    $$UAVOBJECT_SYNTHETICS/perfcounter.h
+    $$UAVOBJECT_SYNTHETICS/perfcounter.h \
+    $$UAVOBJECT_SYNTHETICS/failsafemanagerstatus.h \
+    $$UAVOBJECT_SYNTHETICS/failsafemanagersettings.h
 
 SOURCES += \
     $$UAVOBJECT_SYNTHETICS/accelgyrosettings.cpp \
@@ -233,5 +235,7 @@ SOURCES += \
     $$UAVOBJECT_SYNTHETICS/auxmagsensor.cpp \
     $$UAVOBJECT_SYNTHETICS/auxmagsettings.cpp \
     $$UAVOBJECT_SYNTHETICS/gpsextendedstatus.cpp \
-    $$UAVOBJECT_SYNTHETICS/perfcounter.cpp
+    $$UAVOBJECT_SYNTHETICS/perfcounter.cpp \
+    $$UAVOBJECT_SYNTHETICS/failsafemanagerstatus.cpp \
+    $$UAVOBJECT_SYNTHETICS/failsafemanagersettings.cpp
 
