@@ -8,6 +8,219 @@
 
 /* Begin PBXFileReference section */
 		4354B66314FED9FE004BA3B4 /* flight */ = {isa = PBXFileReference; lastKnownFileType = folder; name = flight; path = ../..; sourceTree = SOURCE_ROOT; };
+		5D21A8571A89A36F004EB314 /* accelgyrosettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = accelgyrosettings.c; path = "../build/uavobject-synthetics/flight/accelgyrosettings.c"; sourceTree = "<group>"; };
+		5D21A8581A89A36F004EB314 /* accelgyrosettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = accelgyrosettings.h; path = "../build/uavobject-synthetics/flight/accelgyrosettings.h"; sourceTree = "<group>"; };
+		5D21A8591A89A36F004EB314 /* accelsensor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = accelsensor.c; path = "../build/uavobject-synthetics/flight/accelsensor.c"; sourceTree = "<group>"; };
+		5D21A85A1A89A36F004EB314 /* accelsensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = accelsensor.h; path = "../build/uavobject-synthetics/flight/accelsensor.h"; sourceTree = "<group>"; };
+		5D21A85B1A89A36F004EB314 /* accelstate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = accelstate.c; path = "../build/uavobject-synthetics/flight/accelstate.c"; sourceTree = "<group>"; };
+		5D21A85C1A89A36F004EB314 /* accelstate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = accelstate.h; path = "../build/uavobject-synthetics/flight/accelstate.h"; sourceTree = "<group>"; };
+		5D21A85D1A89A36F004EB314 /* accessorydesired.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = accessorydesired.c; path = "../build/uavobject-synthetics/flight/accessorydesired.c"; sourceTree = "<group>"; };
+		5D21A85E1A89A36F004EB314 /* accessorydesired.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = accessorydesired.h; path = "../build/uavobject-synthetics/flight/accessorydesired.h"; sourceTree = "<group>"; };
+		5D21A85F1A89A36F004EB314 /* actuatorcommand.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = actuatorcommand.c; path = "../build/uavobject-synthetics/flight/actuatorcommand.c"; sourceTree = "<group>"; };
+		5D21A8601A89A36F004EB314 /* actuatorcommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actuatorcommand.h; path = "../build/uavobject-synthetics/flight/actuatorcommand.h"; sourceTree = "<group>"; };
+		5D21A8611A89A36F004EB314 /* actuatordesired.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = actuatordesired.c; path = "../build/uavobject-synthetics/flight/actuatordesired.c"; sourceTree = "<group>"; };
+		5D21A8621A89A36F004EB314 /* actuatordesired.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actuatordesired.h; path = "../build/uavobject-synthetics/flight/actuatordesired.h"; sourceTree = "<group>"; };
+		5D21A8631A89A36F004EB314 /* actuatorsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = actuatorsettings.c; path = "../build/uavobject-synthetics/flight/actuatorsettings.c"; sourceTree = "<group>"; };
+		5D21A8641A89A36F004EB314 /* actuatorsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actuatorsettings.h; path = "../build/uavobject-synthetics/flight/actuatorsettings.h"; sourceTree = "<group>"; };
+		5D21A8651A89A36F004EB314 /* airspeedsensor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = airspeedsensor.c; path = "../build/uavobject-synthetics/flight/airspeedsensor.c"; sourceTree = "<group>"; };
+		5D21A8661A89A36F004EB314 /* airspeedsensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = airspeedsensor.h; path = "../build/uavobject-synthetics/flight/airspeedsensor.h"; sourceTree = "<group>"; };
+		5D21A8671A89A36F004EB314 /* airspeedsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = airspeedsettings.c; path = "../build/uavobject-synthetics/flight/airspeedsettings.c"; sourceTree = "<group>"; };
+		5D21A8681A89A36F004EB314 /* airspeedsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = airspeedsettings.h; path = "../build/uavobject-synthetics/flight/airspeedsettings.h"; sourceTree = "<group>"; };
+		5D21A8691A89A36F004EB314 /* airspeedstate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = airspeedstate.c; path = "../build/uavobject-synthetics/flight/airspeedstate.c"; sourceTree = "<group>"; };
+		5D21A86A1A89A36F004EB314 /* airspeedstate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = airspeedstate.h; path = "../build/uavobject-synthetics/flight/airspeedstate.h"; sourceTree = "<group>"; };
+		5D21A86B1A89A36F004EB314 /* altitudefiltersettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = altitudefiltersettings.c; path = "../build/uavobject-synthetics/flight/altitudefiltersettings.c"; sourceTree = "<group>"; };
+		5D21A86C1A89A36F004EB314 /* altitudefiltersettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = altitudefiltersettings.h; path = "../build/uavobject-synthetics/flight/altitudefiltersettings.h"; sourceTree = "<group>"; };
+		5D21A86D1A89A36F004EB314 /* altitudeholdsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = altitudeholdsettings.c; path = "../build/uavobject-synthetics/flight/altitudeholdsettings.c"; sourceTree = "<group>"; };
+		5D21A86E1A89A36F004EB314 /* altitudeholdsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = altitudeholdsettings.h; path = "../build/uavobject-synthetics/flight/altitudeholdsettings.h"; sourceTree = "<group>"; };
+		5D21A86F1A89A36F004EB314 /* altitudeholdstatus.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = altitudeholdstatus.c; path = "../build/uavobject-synthetics/flight/altitudeholdstatus.c"; sourceTree = "<group>"; };
+		5D21A8701A89A36F004EB314 /* altitudeholdstatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = altitudeholdstatus.h; path = "../build/uavobject-synthetics/flight/altitudeholdstatus.h"; sourceTree = "<group>"; };
+		5D21A8711A89A36F004EB314 /* attitudesettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = attitudesettings.c; path = "../build/uavobject-synthetics/flight/attitudesettings.c"; sourceTree = "<group>"; };
+		5D21A8721A89A36F004EB314 /* attitudesettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = attitudesettings.h; path = "../build/uavobject-synthetics/flight/attitudesettings.h"; sourceTree = "<group>"; };
+		5D21A8731A89A36F004EB314 /* attitudesimulated.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = attitudesimulated.c; path = "../build/uavobject-synthetics/flight/attitudesimulated.c"; sourceTree = "<group>"; };
+		5D21A8741A89A370004EB314 /* attitudesimulated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = attitudesimulated.h; path = "../build/uavobject-synthetics/flight/attitudesimulated.h"; sourceTree = "<group>"; };
+		5D21A8751A89A370004EB314 /* attitudestate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = attitudestate.c; path = "../build/uavobject-synthetics/flight/attitudestate.c"; sourceTree = "<group>"; };
+		5D21A8761A89A370004EB314 /* attitudestate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = attitudestate.h; path = "../build/uavobject-synthetics/flight/attitudestate.h"; sourceTree = "<group>"; };
+		5D21A8771A89A370004EB314 /* auxmagsensor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = auxmagsensor.c; path = "../build/uavobject-synthetics/flight/auxmagsensor.c"; sourceTree = "<group>"; };
+		5D21A8781A89A370004EB314 /* auxmagsensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = auxmagsensor.h; path = "../build/uavobject-synthetics/flight/auxmagsensor.h"; sourceTree = "<group>"; };
+		5D21A8791A89A370004EB314 /* auxmagsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = auxmagsettings.c; path = "../build/uavobject-synthetics/flight/auxmagsettings.c"; sourceTree = "<group>"; };
+		5D21A87A1A89A370004EB314 /* auxmagsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = auxmagsettings.h; path = "../build/uavobject-synthetics/flight/auxmagsettings.h"; sourceTree = "<group>"; };
+		5D21A87B1A89A370004EB314 /* barosensor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = barosensor.c; path = "../build/uavobject-synthetics/flight/barosensor.c"; sourceTree = "<group>"; };
+		5D21A87C1A89A370004EB314 /* barosensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = barosensor.h; path = "../build/uavobject-synthetics/flight/barosensor.h"; sourceTree = "<group>"; };
+		5D21A87D1A89A370004EB314 /* callbackinfo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = callbackinfo.c; path = "../build/uavobject-synthetics/flight/callbackinfo.c"; sourceTree = "<group>"; };
+		5D21A87E1A89A370004EB314 /* callbackinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = callbackinfo.h; path = "../build/uavobject-synthetics/flight/callbackinfo.h"; sourceTree = "<group>"; };
+		5D21A87F1A89A370004EB314 /* cameradesired.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cameradesired.c; path = "../build/uavobject-synthetics/flight/cameradesired.c"; sourceTree = "<group>"; };
+		5D21A8801A89A370004EB314 /* cameradesired.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cameradesired.h; path = "../build/uavobject-synthetics/flight/cameradesired.h"; sourceTree = "<group>"; };
+		5D21A8811A89A370004EB314 /* camerastabsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = camerastabsettings.c; path = "../build/uavobject-synthetics/flight/camerastabsettings.c"; sourceTree = "<group>"; };
+		5D21A8821A89A370004EB314 /* camerastabsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = camerastabsettings.h; path = "../build/uavobject-synthetics/flight/camerastabsettings.h"; sourceTree = "<group>"; };
+		5D21A8831A89A370004EB314 /* debuglogcontrol.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = debuglogcontrol.c; path = "../build/uavobject-synthetics/flight/debuglogcontrol.c"; sourceTree = "<group>"; };
+		5D21A8841A89A370004EB314 /* debuglogcontrol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = debuglogcontrol.h; path = "../build/uavobject-synthetics/flight/debuglogcontrol.h"; sourceTree = "<group>"; };
+		5D21A8851A89A370004EB314 /* debuglogentry.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = debuglogentry.c; path = "../build/uavobject-synthetics/flight/debuglogentry.c"; sourceTree = "<group>"; };
+		5D21A8861A89A370004EB314 /* debuglogentry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = debuglogentry.h; path = "../build/uavobject-synthetics/flight/debuglogentry.h"; sourceTree = "<group>"; };
+		5D21A8871A89A370004EB314 /* debuglogsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = debuglogsettings.c; path = "../build/uavobject-synthetics/flight/debuglogsettings.c"; sourceTree = "<group>"; };
+		5D21A8881A89A370004EB314 /* debuglogsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = debuglogsettings.h; path = "../build/uavobject-synthetics/flight/debuglogsettings.h"; sourceTree = "<group>"; };
+		5D21A8891A89A370004EB314 /* debuglogstatus.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = debuglogstatus.c; path = "../build/uavobject-synthetics/flight/debuglogstatus.c"; sourceTree = "<group>"; };
+		5D21A88A1A89A370004EB314 /* debuglogstatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = debuglogstatus.h; path = "../build/uavobject-synthetics/flight/debuglogstatus.h"; sourceTree = "<group>"; };
+		5D21A88B1A89A370004EB314 /* ekfconfiguration.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ekfconfiguration.c; path = "../build/uavobject-synthetics/flight/ekfconfiguration.c"; sourceTree = "<group>"; };
+		5D21A88C1A89A370004EB314 /* ekfconfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ekfconfiguration.h; path = "../build/uavobject-synthetics/flight/ekfconfiguration.h"; sourceTree = "<group>"; };
+		5D21A88D1A89A370004EB314 /* ekfstatevariance.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ekfstatevariance.c; path = "../build/uavobject-synthetics/flight/ekfstatevariance.c"; sourceTree = "<group>"; };
+		5D21A88E1A89A370004EB314 /* ekfstatevariance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ekfstatevariance.h; path = "../build/uavobject-synthetics/flight/ekfstatevariance.h"; sourceTree = "<group>"; };
+		5D21A88F1A89A370004EB314 /* failsafemanagersettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = failsafemanagersettings.c; path = "../build/uavobject-synthetics/flight/failsafemanagersettings.c"; sourceTree = "<group>"; };
+		5D21A8901A89A370004EB314 /* failsafemanagersettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = failsafemanagersettings.h; path = "../build/uavobject-synthetics/flight/failsafemanagersettings.h"; sourceTree = "<group>"; };
+		5D21A8911A89A370004EB314 /* failsafemanagerstatus.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = failsafemanagerstatus.c; path = "../build/uavobject-synthetics/flight/failsafemanagerstatus.c"; sourceTree = "<group>"; };
+		5D21A8921A89A370004EB314 /* failsafemanagerstatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = failsafemanagerstatus.h; path = "../build/uavobject-synthetics/flight/failsafemanagerstatus.h"; sourceTree = "<group>"; };
+		5D21A8931A89A370004EB314 /* faultsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = faultsettings.c; path = "../build/uavobject-synthetics/flight/faultsettings.c"; sourceTree = "<group>"; };
+		5D21A8941A89A370004EB314 /* faultsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = faultsettings.h; path = "../build/uavobject-synthetics/flight/faultsettings.h"; sourceTree = "<group>"; };
+		5D21A8951A89A370004EB314 /* firmwareiapobj.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = firmwareiapobj.c; path = "../build/uavobject-synthetics/flight/firmwareiapobj.c"; sourceTree = "<group>"; };
+		5D21A8961A89A370004EB314 /* firmwareiapobj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = firmwareiapobj.h; path = "../build/uavobject-synthetics/flight/firmwareiapobj.h"; sourceTree = "<group>"; };
+		5D21A8971A89A370004EB314 /* fixedwingpathfollowersettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fixedwingpathfollowersettings.c; path = "../build/uavobject-synthetics/flight/fixedwingpathfollowersettings.c"; sourceTree = "<group>"; };
+		5D21A8981A89A370004EB314 /* fixedwingpathfollowersettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fixedwingpathfollowersettings.h; path = "../build/uavobject-synthetics/flight/fixedwingpathfollowersettings.h"; sourceTree = "<group>"; };
+		5D21A8991A89A370004EB314 /* fixedwingpathfollowerstatus.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fixedwingpathfollowerstatus.c; path = "../build/uavobject-synthetics/flight/fixedwingpathfollowerstatus.c"; sourceTree = "<group>"; };
+		5D21A89A1A89A370004EB314 /* fixedwingpathfollowerstatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fixedwingpathfollowerstatus.h; path = "../build/uavobject-synthetics/flight/fixedwingpathfollowerstatus.h"; sourceTree = "<group>"; };
+		5D21A89B1A89A370004EB314 /* flightbatterysettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = flightbatterysettings.c; path = "../build/uavobject-synthetics/flight/flightbatterysettings.c"; sourceTree = "<group>"; };
+		5D21A89C1A89A370004EB314 /* flightbatterysettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flightbatterysettings.h; path = "../build/uavobject-synthetics/flight/flightbatterysettings.h"; sourceTree = "<group>"; };
+		5D21A89D1A89A370004EB314 /* flightbatterystate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = flightbatterystate.c; path = "../build/uavobject-synthetics/flight/flightbatterystate.c"; sourceTree = "<group>"; };
+		5D21A89E1A89A370004EB314 /* flightbatterystate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flightbatterystate.h; path = "../build/uavobject-synthetics/flight/flightbatterystate.h"; sourceTree = "<group>"; };
+		5D21A89F1A89A370004EB314 /* flightmodesettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = flightmodesettings.c; path = "../build/uavobject-synthetics/flight/flightmodesettings.c"; sourceTree = "<group>"; };
+		5D21A8A01A89A370004EB314 /* flightmodesettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flightmodesettings.h; path = "../build/uavobject-synthetics/flight/flightmodesettings.h"; sourceTree = "<group>"; };
+		5D21A8A11A89A370004EB314 /* flightplancontrol.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = flightplancontrol.c; path = "../build/uavobject-synthetics/flight/flightplancontrol.c"; sourceTree = "<group>"; };
+		5D21A8A21A89A370004EB314 /* flightplancontrol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flightplancontrol.h; path = "../build/uavobject-synthetics/flight/flightplancontrol.h"; sourceTree = "<group>"; };
+		5D21A8A31A89A370004EB314 /* flightplansettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = flightplansettings.c; path = "../build/uavobject-synthetics/flight/flightplansettings.c"; sourceTree = "<group>"; };
+		5D21A8A41A89A370004EB314 /* flightplansettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flightplansettings.h; path = "../build/uavobject-synthetics/flight/flightplansettings.h"; sourceTree = "<group>"; };
+		5D21A8A51A89A370004EB314 /* flightplanstatus.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = flightplanstatus.c; path = "../build/uavobject-synthetics/flight/flightplanstatus.c"; sourceTree = "<group>"; };
+		5D21A8A61A89A370004EB314 /* flightplanstatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flightplanstatus.h; path = "../build/uavobject-synthetics/flight/flightplanstatus.h"; sourceTree = "<group>"; };
+		5D21A8A71A89A370004EB314 /* flightstatus.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = flightstatus.c; path = "../build/uavobject-synthetics/flight/flightstatus.c"; sourceTree = "<group>"; };
+		5D21A8A81A89A370004EB314 /* flightstatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flightstatus.h; path = "../build/uavobject-synthetics/flight/flightstatus.h"; sourceTree = "<group>"; };
+		5D21A8A91A89A370004EB314 /* flighttelemetrystats.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = flighttelemetrystats.c; path = "../build/uavobject-synthetics/flight/flighttelemetrystats.c"; sourceTree = "<group>"; };
+		5D21A8AA1A89A370004EB314 /* flighttelemetrystats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flighttelemetrystats.h; path = "../build/uavobject-synthetics/flight/flighttelemetrystats.h"; sourceTree = "<group>"; };
+		5D21A8AB1A89A370004EB314 /* gcsreceiver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gcsreceiver.c; path = "../build/uavobject-synthetics/flight/gcsreceiver.c"; sourceTree = "<group>"; };
+		5D21A8AC1A89A370004EB314 /* gcsreceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gcsreceiver.h; path = "../build/uavobject-synthetics/flight/gcsreceiver.h"; sourceTree = "<group>"; };
+		5D21A8AD1A89A370004EB314 /* gcstelemetrystats.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gcstelemetrystats.c; path = "../build/uavobject-synthetics/flight/gcstelemetrystats.c"; sourceTree = "<group>"; };
+		5D21A8AE1A89A370004EB314 /* gcstelemetrystats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gcstelemetrystats.h; path = "../build/uavobject-synthetics/flight/gcstelemetrystats.h"; sourceTree = "<group>"; };
+		5D21A8AF1A89A370004EB314 /* gpsextendedstatus.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gpsextendedstatus.c; path = "../build/uavobject-synthetics/flight/gpsextendedstatus.c"; sourceTree = "<group>"; };
+		5D21A8B01A89A370004EB314 /* gpsextendedstatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gpsextendedstatus.h; path = "../build/uavobject-synthetics/flight/gpsextendedstatus.h"; sourceTree = "<group>"; };
+		5D21A8B11A89A370004EB314 /* gpspositionsensor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gpspositionsensor.c; path = "../build/uavobject-synthetics/flight/gpspositionsensor.c"; sourceTree = "<group>"; };
+		5D21A8B21A89A370004EB314 /* gpspositionsensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gpspositionsensor.h; path = "../build/uavobject-synthetics/flight/gpspositionsensor.h"; sourceTree = "<group>"; };
+		5D21A8B31A89A370004EB314 /* gpssatellites.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gpssatellites.c; path = "../build/uavobject-synthetics/flight/gpssatellites.c"; sourceTree = "<group>"; };
+		5D21A8B41A89A370004EB314 /* gpssatellites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gpssatellites.h; path = "../build/uavobject-synthetics/flight/gpssatellites.h"; sourceTree = "<group>"; };
+		5D21A8B51A89A370004EB314 /* gpssettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gpssettings.c; path = "../build/uavobject-synthetics/flight/gpssettings.c"; sourceTree = "<group>"; };
+		5D21A8B61A89A370004EB314 /* gpssettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gpssettings.h; path = "../build/uavobject-synthetics/flight/gpssettings.h"; sourceTree = "<group>"; };
+		5D21A8B71A89A370004EB314 /* gpstime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gpstime.c; path = "../build/uavobject-synthetics/flight/gpstime.c"; sourceTree = "<group>"; };
+		5D21A8B81A89A370004EB314 /* gpstime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gpstime.h; path = "../build/uavobject-synthetics/flight/gpstime.h"; sourceTree = "<group>"; };
+		5D21A8B91A89A370004EB314 /* gpsvelocitysensor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gpsvelocitysensor.c; path = "../build/uavobject-synthetics/flight/gpsvelocitysensor.c"; sourceTree = "<group>"; };
+		5D21A8BA1A89A370004EB314 /* gpsvelocitysensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gpsvelocitysensor.h; path = "../build/uavobject-synthetics/flight/gpsvelocitysensor.h"; sourceTree = "<group>"; };
+		5D21A8BB1A89A370004EB314 /* groundtruth.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = groundtruth.c; path = "../build/uavobject-synthetics/flight/groundtruth.c"; sourceTree = "<group>"; };
+		5D21A8BC1A89A370004EB314 /* groundtruth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = groundtruth.h; path = "../build/uavobject-synthetics/flight/groundtruth.h"; sourceTree = "<group>"; };
+		5D21A8BD1A89A370004EB314 /* gyrosensor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gyrosensor.c; path = "../build/uavobject-synthetics/flight/gyrosensor.c"; sourceTree = "<group>"; };
+		5D21A8BE1A89A370004EB314 /* gyrosensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gyrosensor.h; path = "../build/uavobject-synthetics/flight/gyrosensor.h"; sourceTree = "<group>"; };
+		5D21A8BF1A89A370004EB314 /* gyrostate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gyrostate.c; path = "../build/uavobject-synthetics/flight/gyrostate.c"; sourceTree = "<group>"; };
+		5D21A8C01A89A370004EB314 /* gyrostate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gyrostate.h; path = "../build/uavobject-synthetics/flight/gyrostate.h"; sourceTree = "<group>"; };
+		5D21A8C11A89A370004EB314 /* homelocation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = homelocation.c; path = "../build/uavobject-synthetics/flight/homelocation.c"; sourceTree = "<group>"; };
+		5D21A8C21A89A370004EB314 /* homelocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = homelocation.h; path = "../build/uavobject-synthetics/flight/homelocation.h"; sourceTree = "<group>"; };
+		5D21A8C31A89A370004EB314 /* hwsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hwsettings.c; path = "../build/uavobject-synthetics/flight/hwsettings.c"; sourceTree = "<group>"; };
+		5D21A8C41A89A370004EB314 /* hwsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hwsettings.h; path = "../build/uavobject-synthetics/flight/hwsettings.h"; sourceTree = "<group>"; };
+		5D21A8C51A89A370004EB314 /* i2cstats.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = i2cstats.c; path = "../build/uavobject-synthetics/flight/i2cstats.c"; sourceTree = "<group>"; };
+		5D21A8C61A89A370004EB314 /* i2cstats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = i2cstats.h; path = "../build/uavobject-synthetics/flight/i2cstats.h"; sourceTree = "<group>"; };
+		5D21A8C71A89A370004EB314 /* magsensor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = magsensor.c; path = "../build/uavobject-synthetics/flight/magsensor.c"; sourceTree = "<group>"; };
+		5D21A8C81A89A370004EB314 /* magsensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = magsensor.h; path = "../build/uavobject-synthetics/flight/magsensor.h"; sourceTree = "<group>"; };
+		5D21A8C91A89A370004EB314 /* magstate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = magstate.c; path = "../build/uavobject-synthetics/flight/magstate.c"; sourceTree = "<group>"; };
+		5D21A8CA1A89A370004EB314 /* magstate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = magstate.h; path = "../build/uavobject-synthetics/flight/magstate.h"; sourceTree = "<group>"; };
+		5D21A8CB1A89A370004EB314 /* Makefile.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; name = Makefile.inc; path = "../build/uavobject-synthetics/flight/Makefile.inc"; sourceTree = "<group>"; };
+		5D21A8CC1A89A370004EB314 /* manualcontrolcommand.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = manualcontrolcommand.c; path = "../build/uavobject-synthetics/flight/manualcontrolcommand.c"; sourceTree = "<group>"; };
+		5D21A8CD1A89A370004EB314 /* manualcontrolcommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = manualcontrolcommand.h; path = "../build/uavobject-synthetics/flight/manualcontrolcommand.h"; sourceTree = "<group>"; };
+		5D21A8CE1A89A370004EB314 /* manualcontrolsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = manualcontrolsettings.c; path = "../build/uavobject-synthetics/flight/manualcontrolsettings.c"; sourceTree = "<group>"; };
+		5D21A8CF1A89A370004EB314 /* manualcontrolsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = manualcontrolsettings.h; path = "../build/uavobject-synthetics/flight/manualcontrolsettings.h"; sourceTree = "<group>"; };
+		5D21A8D01A89A370004EB314 /* mixersettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mixersettings.c; path = "../build/uavobject-synthetics/flight/mixersettings.c"; sourceTree = "<group>"; };
+		5D21A8D11A89A370004EB314 /* mixersettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mixersettings.h; path = "../build/uavobject-synthetics/flight/mixersettings.h"; sourceTree = "<group>"; };
+		5D21A8D21A89A370004EB314 /* mixerstatus.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mixerstatus.c; path = "../build/uavobject-synthetics/flight/mixerstatus.c"; sourceTree = "<group>"; };
+		5D21A8D31A89A370004EB314 /* mixerstatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mixerstatus.h; path = "../build/uavobject-synthetics/flight/mixerstatus.h"; sourceTree = "<group>"; };
+		5D21A8D41A89A370004EB314 /* mpu6000settings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mpu6000settings.c; path = "../build/uavobject-synthetics/flight/mpu6000settings.c"; sourceTree = "<group>"; };
+		5D21A8D51A89A370004EB314 /* mpu6000settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mpu6000settings.h; path = "../build/uavobject-synthetics/flight/mpu6000settings.h"; sourceTree = "<group>"; };
+		5D21A8D61A89A370004EB314 /* nedaccel.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = nedaccel.c; path = "../build/uavobject-synthetics/flight/nedaccel.c"; sourceTree = "<group>"; };
+		5D21A8D71A89A370004EB314 /* nedaccel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nedaccel.h; path = "../build/uavobject-synthetics/flight/nedaccel.h"; sourceTree = "<group>"; };
+		5D21A8D81A89A370004EB314 /* objectpersistence.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = objectpersistence.c; path = "../build/uavobject-synthetics/flight/objectpersistence.c"; sourceTree = "<group>"; };
+		5D21A8D91A89A370004EB314 /* objectpersistence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = objectpersistence.h; path = "../build/uavobject-synthetics/flight/objectpersistence.h"; sourceTree = "<group>"; };
+		5D21A8DA1A89A370004EB314 /* oplinkreceiver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = oplinkreceiver.c; path = "../build/uavobject-synthetics/flight/oplinkreceiver.c"; sourceTree = "<group>"; };
+		5D21A8DB1A89A370004EB314 /* oplinkreceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = oplinkreceiver.h; path = "../build/uavobject-synthetics/flight/oplinkreceiver.h"; sourceTree = "<group>"; };
+		5D21A8DC1A89A370004EB314 /* oplinksettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = oplinksettings.c; path = "../build/uavobject-synthetics/flight/oplinksettings.c"; sourceTree = "<group>"; };
+		5D21A8DD1A89A370004EB314 /* oplinksettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = oplinksettings.h; path = "../build/uavobject-synthetics/flight/oplinksettings.h"; sourceTree = "<group>"; };
+		5D21A8DE1A89A370004EB314 /* oplinkstatus.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = oplinkstatus.c; path = "../build/uavobject-synthetics/flight/oplinkstatus.c"; sourceTree = "<group>"; };
+		5D21A8DF1A89A370004EB314 /* oplinkstatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = oplinkstatus.h; path = "../build/uavobject-synthetics/flight/oplinkstatus.h"; sourceTree = "<group>"; };
+		5D21A8E01A89A370004EB314 /* osdsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = osdsettings.c; path = "../build/uavobject-synthetics/flight/osdsettings.c"; sourceTree = "<group>"; };
+		5D21A8E11A89A370004EB314 /* osdsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = osdsettings.h; path = "../build/uavobject-synthetics/flight/osdsettings.h"; sourceTree = "<group>"; };
+		5D21A8E21A89A370004EB314 /* overosyncsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = overosyncsettings.c; path = "../build/uavobject-synthetics/flight/overosyncsettings.c"; sourceTree = "<group>"; };
+		5D21A8E31A89A370004EB314 /* overosyncsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = overosyncsettings.h; path = "../build/uavobject-synthetics/flight/overosyncsettings.h"; sourceTree = "<group>"; };
+		5D21A8E41A89A370004EB314 /* overosyncstats.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = overosyncstats.c; path = "../build/uavobject-synthetics/flight/overosyncstats.c"; sourceTree = "<group>"; };
+		5D21A8E51A89A370004EB314 /* overosyncstats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = overosyncstats.h; path = "../build/uavobject-synthetics/flight/overosyncstats.h"; sourceTree = "<group>"; };
+		5D21A8E61A89A370004EB314 /* pathaction.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pathaction.c; path = "../build/uavobject-synthetics/flight/pathaction.c"; sourceTree = "<group>"; };
+		5D21A8E71A89A370004EB314 /* pathaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pathaction.h; path = "../build/uavobject-synthetics/flight/pathaction.h"; sourceTree = "<group>"; };
+		5D21A8E81A89A370004EB314 /* pathdesired.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pathdesired.c; path = "../build/uavobject-synthetics/flight/pathdesired.c"; sourceTree = "<group>"; };
+		5D21A8E91A89A370004EB314 /* pathdesired.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pathdesired.h; path = "../build/uavobject-synthetics/flight/pathdesired.h"; sourceTree = "<group>"; };
+		5D21A8EA1A89A370004EB314 /* pathplan.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pathplan.c; path = "../build/uavobject-synthetics/flight/pathplan.c"; sourceTree = "<group>"; };
+		5D21A8EB1A89A370004EB314 /* pathplan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pathplan.h; path = "../build/uavobject-synthetics/flight/pathplan.h"; sourceTree = "<group>"; };
+		5D21A8EC1A89A370004EB314 /* pathstatus.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pathstatus.c; path = "../build/uavobject-synthetics/flight/pathstatus.c"; sourceTree = "<group>"; };
+		5D21A8ED1A89A370004EB314 /* pathstatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pathstatus.h; path = "../build/uavobject-synthetics/flight/pathstatus.h"; sourceTree = "<group>"; };
+		5D21A8EE1A89A370004EB314 /* perfcounter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = perfcounter.c; path = "../build/uavobject-synthetics/flight/perfcounter.c"; sourceTree = "<group>"; };
+		5D21A8EF1A89A370004EB314 /* perfcounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = perfcounter.h; path = "../build/uavobject-synthetics/flight/perfcounter.h"; sourceTree = "<group>"; };
+		5D21A8F01A89A370004EB314 /* poilearnsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = poilearnsettings.c; path = "../build/uavobject-synthetics/flight/poilearnsettings.c"; sourceTree = "<group>"; };
+		5D21A8F11A89A370004EB314 /* poilearnsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = poilearnsettings.h; path = "../build/uavobject-synthetics/flight/poilearnsettings.h"; sourceTree = "<group>"; };
+		5D21A8F21A89A370004EB314 /* poilocation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = poilocation.c; path = "../build/uavobject-synthetics/flight/poilocation.c"; sourceTree = "<group>"; };
+		5D21A8F31A89A370004EB314 /* poilocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = poilocation.h; path = "../build/uavobject-synthetics/flight/poilocation.h"; sourceTree = "<group>"; };
+		5D21A8F41A89A370004EB314 /* positionstate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = positionstate.c; path = "../build/uavobject-synthetics/flight/positionstate.c"; sourceTree = "<group>"; };
+		5D21A8F51A89A370004EB314 /* positionstate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = positionstate.h; path = "../build/uavobject-synthetics/flight/positionstate.h"; sourceTree = "<group>"; };
+		5D21A8F61A89A370004EB314 /* radiocombridgestats.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = radiocombridgestats.c; path = "../build/uavobject-synthetics/flight/radiocombridgestats.c"; sourceTree = "<group>"; };
+		5D21A8F71A89A370004EB314 /* radiocombridgestats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = radiocombridgestats.h; path = "../build/uavobject-synthetics/flight/radiocombridgestats.h"; sourceTree = "<group>"; };
+		5D21A8F81A89A370004EB314 /* ratedesired.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ratedesired.c; path = "../build/uavobject-synthetics/flight/ratedesired.c"; sourceTree = "<group>"; };
+		5D21A8F91A89A370004EB314 /* ratedesired.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ratedesired.h; path = "../build/uavobject-synthetics/flight/ratedesired.h"; sourceTree = "<group>"; };
+		5D21A8FA1A89A370004EB314 /* receiveractivity.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = receiveractivity.c; path = "../build/uavobject-synthetics/flight/receiveractivity.c"; sourceTree = "<group>"; };
+		5D21A8FB1A89A370004EB314 /* receiveractivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = receiveractivity.h; path = "../build/uavobject-synthetics/flight/receiveractivity.h"; sourceTree = "<group>"; };
+		5D21A8FC1A89A370004EB314 /* revocalibration.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = revocalibration.c; path = "../build/uavobject-synthetics/flight/revocalibration.c"; sourceTree = "<group>"; };
+		5D21A8FD1A89A370004EB314 /* revocalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = revocalibration.h; path = "../build/uavobject-synthetics/flight/revocalibration.h"; sourceTree = "<group>"; };
+		5D21A8FE1A89A370004EB314 /* revosettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = revosettings.c; path = "../build/uavobject-synthetics/flight/revosettings.c"; sourceTree = "<group>"; };
+		5D21A8FF1A89A370004EB314 /* revosettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = revosettings.h; path = "../build/uavobject-synthetics/flight/revosettings.h"; sourceTree = "<group>"; };
+		5D21A9001A89A370004EB314 /* sonaraltitude.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sonaraltitude.c; path = "../build/uavobject-synthetics/flight/sonaraltitude.c"; sourceTree = "<group>"; };
+		5D21A9011A89A370004EB314 /* sonaraltitude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sonaraltitude.h; path = "../build/uavobject-synthetics/flight/sonaraltitude.h"; sourceTree = "<group>"; };
+		5D21A9021A89A370004EB314 /* stabilizationbank.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stabilizationbank.c; path = "../build/uavobject-synthetics/flight/stabilizationbank.c"; sourceTree = "<group>"; };
+		5D21A9031A89A370004EB314 /* stabilizationbank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stabilizationbank.h; path = "../build/uavobject-synthetics/flight/stabilizationbank.h"; sourceTree = "<group>"; };
+		5D21A9041A89A370004EB314 /* stabilizationdesired.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stabilizationdesired.c; path = "../build/uavobject-synthetics/flight/stabilizationdesired.c"; sourceTree = "<group>"; };
+		5D21A9051A89A371004EB314 /* stabilizationdesired.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stabilizationdesired.h; path = "../build/uavobject-synthetics/flight/stabilizationdesired.h"; sourceTree = "<group>"; };
+		5D21A9061A89A371004EB314 /* stabilizationsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stabilizationsettings.c; path = "../build/uavobject-synthetics/flight/stabilizationsettings.c"; sourceTree = "<group>"; };
+		5D21A9071A89A371004EB314 /* stabilizationsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stabilizationsettings.h; path = "../build/uavobject-synthetics/flight/stabilizationsettings.h"; sourceTree = "<group>"; };
+		5D21A9081A89A371004EB314 /* stabilizationsettingsbank1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stabilizationsettingsbank1.c; path = "../build/uavobject-synthetics/flight/stabilizationsettingsbank1.c"; sourceTree = "<group>"; };
+		5D21A9091A89A371004EB314 /* stabilizationsettingsbank1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stabilizationsettingsbank1.h; path = "../build/uavobject-synthetics/flight/stabilizationsettingsbank1.h"; sourceTree = "<group>"; };
+		5D21A90A1A89A371004EB314 /* stabilizationsettingsbank2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stabilizationsettingsbank2.c; path = "../build/uavobject-synthetics/flight/stabilizationsettingsbank2.c"; sourceTree = "<group>"; };
+		5D21A90B1A89A371004EB314 /* stabilizationsettingsbank2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stabilizationsettingsbank2.h; path = "../build/uavobject-synthetics/flight/stabilizationsettingsbank2.h"; sourceTree = "<group>"; };
+		5D21A90C1A89A371004EB314 /* stabilizationsettingsbank3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stabilizationsettingsbank3.c; path = "../build/uavobject-synthetics/flight/stabilizationsettingsbank3.c"; sourceTree = "<group>"; };
+		5D21A90D1A89A371004EB314 /* stabilizationsettingsbank3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stabilizationsettingsbank3.h; path = "../build/uavobject-synthetics/flight/stabilizationsettingsbank3.h"; sourceTree = "<group>"; };
+		5D21A90E1A89A371004EB314 /* stabilizationstatus.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stabilizationstatus.c; path = "../build/uavobject-synthetics/flight/stabilizationstatus.c"; sourceTree = "<group>"; };
+		5D21A90F1A89A371004EB314 /* stabilizationstatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stabilizationstatus.h; path = "../build/uavobject-synthetics/flight/stabilizationstatus.h"; sourceTree = "<group>"; };
+		5D21A9101A89A371004EB314 /* systemalarms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = systemalarms.c; path = "../build/uavobject-synthetics/flight/systemalarms.c"; sourceTree = "<group>"; };
+		5D21A9111A89A371004EB314 /* systemalarms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = systemalarms.h; path = "../build/uavobject-synthetics/flight/systemalarms.h"; sourceTree = "<group>"; };
+		5D21A9121A89A371004EB314 /* systemsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = systemsettings.c; path = "../build/uavobject-synthetics/flight/systemsettings.c"; sourceTree = "<group>"; };
+		5D21A9131A89A371004EB314 /* systemsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = systemsettings.h; path = "../build/uavobject-synthetics/flight/systemsettings.h"; sourceTree = "<group>"; };
+		5D21A9141A89A371004EB314 /* systemstats.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = systemstats.c; path = "../build/uavobject-synthetics/flight/systemstats.c"; sourceTree = "<group>"; };
+		5D21A9151A89A371004EB314 /* systemstats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = systemstats.h; path = "../build/uavobject-synthetics/flight/systemstats.h"; sourceTree = "<group>"; };
+		5D21A9161A89A371004EB314 /* takeofflocation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = takeofflocation.c; path = "../build/uavobject-synthetics/flight/takeofflocation.c"; sourceTree = "<group>"; };
+		5D21A9171A89A371004EB314 /* takeofflocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = takeofflocation.h; path = "../build/uavobject-synthetics/flight/takeofflocation.h"; sourceTree = "<group>"; };
+		5D21A9181A89A371004EB314 /* taskinfo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = taskinfo.c; path = "../build/uavobject-synthetics/flight/taskinfo.c"; sourceTree = "<group>"; };
+		5D21A9191A89A371004EB314 /* taskinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = taskinfo.h; path = "../build/uavobject-synthetics/flight/taskinfo.h"; sourceTree = "<group>"; };
+		5D21A91A1A89A371004EB314 /* txpidsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = txpidsettings.c; path = "../build/uavobject-synthetics/flight/txpidsettings.c"; sourceTree = "<group>"; };
+		5D21A91B1A89A371004EB314 /* txpidsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = txpidsettings.h; path = "../build/uavobject-synthetics/flight/txpidsettings.h"; sourceTree = "<group>"; };
+		5D21A91C1A89A371004EB314 /* uavobjectsinit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = uavobjectsinit.c; path = "../build/uavobject-synthetics/flight/uavobjectsinit.c"; sourceTree = "<group>"; };
+		5D21A91D1A89A371004EB314 /* uavobjectsinit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = uavobjectsinit.h; path = "../build/uavobject-synthetics/flight/uavobjectsinit.h"; sourceTree = "<group>"; };
+		5D21A91E1A89A371004EB314 /* velocitydesired.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = velocitydesired.c; path = "../build/uavobject-synthetics/flight/velocitydesired.c"; sourceTree = "<group>"; };
+		5D21A91F1A89A371004EB314 /* velocitydesired.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = velocitydesired.h; path = "../build/uavobject-synthetics/flight/velocitydesired.h"; sourceTree = "<group>"; };
+		5D21A9201A89A371004EB314 /* velocitystate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = velocitystate.c; path = "../build/uavobject-synthetics/flight/velocitystate.c"; sourceTree = "<group>"; };
+		5D21A9211A89A371004EB314 /* velocitystate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = velocitystate.h; path = "../build/uavobject-synthetics/flight/velocitystate.h"; sourceTree = "<group>"; };
+		5D21A9221A89A371004EB314 /* vtolpathfollowersettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vtolpathfollowersettings.c; path = "../build/uavobject-synthetics/flight/vtolpathfollowersettings.c"; sourceTree = "<group>"; };
+		5D21A9231A89A371004EB314 /* vtolpathfollowersettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vtolpathfollowersettings.h; path = "../build/uavobject-synthetics/flight/vtolpathfollowersettings.h"; sourceTree = "<group>"; };
+		5D21A9241A89A371004EB314 /* watchdogstatus.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = watchdogstatus.c; path = "../build/uavobject-synthetics/flight/watchdogstatus.c"; sourceTree = "<group>"; };
+		5D21A9251A89A371004EB314 /* watchdogstatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = watchdogstatus.h; path = "../build/uavobject-synthetics/flight/watchdogstatus.h"; sourceTree = "<group>"; };
+		5D21A9261A89A371004EB314 /* waypoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = waypoint.c; path = "../build/uavobject-synthetics/flight/waypoint.c"; sourceTree = "<group>"; };
+		5D21A9271A89A371004EB314 /* waypoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = waypoint.h; path = "../build/uavobject-synthetics/flight/waypoint.h"; sourceTree = "<group>"; };
+		5D21A9281A89A371004EB314 /* waypointactive.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = waypointactive.c; path = "../build/uavobject-synthetics/flight/waypointactive.c"; sourceTree = "<group>"; };
+		5D21A9291A89A371004EB314 /* waypointactive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = waypointactive.h; path = "../build/uavobject-synthetics/flight/waypointactive.h"; sourceTree = "<group>"; };
+		5D21A92A1A8B0D49004EB314 /* failsafeModes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = failsafeModes.cpp; path = ../../modules/failsafeManager/failsafeModes.cpp; sourceTree = "<group>"; };
+		5D21A92B1A8B0D49004EB314 /* failsafeModes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = failsafeModes.h; path = ../../modules/failsafeManager/failsafeModes.h; sourceTree = "<group>"; };
 		65173C9F12EBFD1700D6A7CB /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = ../../../Makefile; sourceTree = SOURCE_ROOT; };
 		65904F1814632C1700FD9482 /* firmware-defs.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "firmware-defs.mk"; sourceTree = "<group>"; };
 		65904F2214632C1700FD9482 /* board-info.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "board-info.mk"; sourceTree = "<group>"; };
@@ -33,6 +246,8 @@
 		08FB7794FE84155DC02AAC07 /* OpenPilotOSX */ = {
 			isa = PBXGroup;
 			children = (
+				5D21A92A1A8B0D49004EB314 /* failsafeModes.cpp */,
+				5D21A92B1A8B0D49004EB314 /* failsafeModes.h */,
 				4354B66314FED9FE004BA3B4 /* flight */,
 				65904F1614632C1700FD9482 /* make */,
 				65C35E4E12EFB2F3004811C2 /* shared */,
@@ -173,6 +388,217 @@
 		65C35E4E12EFB2F3004811C2 /* shared */ = {
 			isa = PBXGroup;
 			children = (
+				5D21A8571A89A36F004EB314 /* accelgyrosettings.c */,
+				5D21A8581A89A36F004EB314 /* accelgyrosettings.h */,
+				5D21A8591A89A36F004EB314 /* accelsensor.c */,
+				5D21A85A1A89A36F004EB314 /* accelsensor.h */,
+				5D21A85B1A89A36F004EB314 /* accelstate.c */,
+				5D21A85C1A89A36F004EB314 /* accelstate.h */,
+				5D21A85D1A89A36F004EB314 /* accessorydesired.c */,
+				5D21A85E1A89A36F004EB314 /* accessorydesired.h */,
+				5D21A85F1A89A36F004EB314 /* actuatorcommand.c */,
+				5D21A8601A89A36F004EB314 /* actuatorcommand.h */,
+				5D21A8611A89A36F004EB314 /* actuatordesired.c */,
+				5D21A8621A89A36F004EB314 /* actuatordesired.h */,
+				5D21A8631A89A36F004EB314 /* actuatorsettings.c */,
+				5D21A8641A89A36F004EB314 /* actuatorsettings.h */,
+				5D21A8651A89A36F004EB314 /* airspeedsensor.c */,
+				5D21A8661A89A36F004EB314 /* airspeedsensor.h */,
+				5D21A8671A89A36F004EB314 /* airspeedsettings.c */,
+				5D21A8681A89A36F004EB314 /* airspeedsettings.h */,
+				5D21A8691A89A36F004EB314 /* airspeedstate.c */,
+				5D21A86A1A89A36F004EB314 /* airspeedstate.h */,
+				5D21A86B1A89A36F004EB314 /* altitudefiltersettings.c */,
+				5D21A86C1A89A36F004EB314 /* altitudefiltersettings.h */,
+				5D21A86D1A89A36F004EB314 /* altitudeholdsettings.c */,
+				5D21A86E1A89A36F004EB314 /* altitudeholdsettings.h */,
+				5D21A86F1A89A36F004EB314 /* altitudeholdstatus.c */,
+				5D21A8701A89A36F004EB314 /* altitudeholdstatus.h */,
+				5D21A8711A89A36F004EB314 /* attitudesettings.c */,
+				5D21A8721A89A36F004EB314 /* attitudesettings.h */,
+				5D21A8731A89A36F004EB314 /* attitudesimulated.c */,
+				5D21A8741A89A370004EB314 /* attitudesimulated.h */,
+				5D21A8751A89A370004EB314 /* attitudestate.c */,
+				5D21A8761A89A370004EB314 /* attitudestate.h */,
+				5D21A8771A89A370004EB314 /* auxmagsensor.c */,
+				5D21A8781A89A370004EB314 /* auxmagsensor.h */,
+				5D21A8791A89A370004EB314 /* auxmagsettings.c */,
+				5D21A87A1A89A370004EB314 /* auxmagsettings.h */,
+				5D21A87B1A89A370004EB314 /* barosensor.c */,
+				5D21A87C1A89A370004EB314 /* barosensor.h */,
+				5D21A87D1A89A370004EB314 /* callbackinfo.c */,
+				5D21A87E1A89A370004EB314 /* callbackinfo.h */,
+				5D21A87F1A89A370004EB314 /* cameradesired.c */,
+				5D21A8801A89A370004EB314 /* cameradesired.h */,
+				5D21A8811A89A370004EB314 /* camerastabsettings.c */,
+				5D21A8821A89A370004EB314 /* camerastabsettings.h */,
+				5D21A8831A89A370004EB314 /* debuglogcontrol.c */,
+				5D21A8841A89A370004EB314 /* debuglogcontrol.h */,
+				5D21A8851A89A370004EB314 /* debuglogentry.c */,
+				5D21A8861A89A370004EB314 /* debuglogentry.h */,
+				5D21A8871A89A370004EB314 /* debuglogsettings.c */,
+				5D21A8881A89A370004EB314 /* debuglogsettings.h */,
+				5D21A8891A89A370004EB314 /* debuglogstatus.c */,
+				5D21A88A1A89A370004EB314 /* debuglogstatus.h */,
+				5D21A88B1A89A370004EB314 /* ekfconfiguration.c */,
+				5D21A88C1A89A370004EB314 /* ekfconfiguration.h */,
+				5D21A88D1A89A370004EB314 /* ekfstatevariance.c */,
+				5D21A88E1A89A370004EB314 /* ekfstatevariance.h */,
+				5D21A88F1A89A370004EB314 /* failsafemanagersettings.c */,
+				5D21A8901A89A370004EB314 /* failsafemanagersettings.h */,
+				5D21A8911A89A370004EB314 /* failsafemanagerstatus.c */,
+				5D21A8921A89A370004EB314 /* failsafemanagerstatus.h */,
+				5D21A8931A89A370004EB314 /* faultsettings.c */,
+				5D21A8941A89A370004EB314 /* faultsettings.h */,
+				5D21A8951A89A370004EB314 /* firmwareiapobj.c */,
+				5D21A8961A89A370004EB314 /* firmwareiapobj.h */,
+				5D21A8971A89A370004EB314 /* fixedwingpathfollowersettings.c */,
+				5D21A8981A89A370004EB314 /* fixedwingpathfollowersettings.h */,
+				5D21A8991A89A370004EB314 /* fixedwingpathfollowerstatus.c */,
+				5D21A89A1A89A370004EB314 /* fixedwingpathfollowerstatus.h */,
+				5D21A89B1A89A370004EB314 /* flightbatterysettings.c */,
+				5D21A89C1A89A370004EB314 /* flightbatterysettings.h */,
+				5D21A89D1A89A370004EB314 /* flightbatterystate.c */,
+				5D21A89E1A89A370004EB314 /* flightbatterystate.h */,
+				5D21A89F1A89A370004EB314 /* flightmodesettings.c */,
+				5D21A8A01A89A370004EB314 /* flightmodesettings.h */,
+				5D21A8A11A89A370004EB314 /* flightplancontrol.c */,
+				5D21A8A21A89A370004EB314 /* flightplancontrol.h */,
+				5D21A8A31A89A370004EB314 /* flightplansettings.c */,
+				5D21A8A41A89A370004EB314 /* flightplansettings.h */,
+				5D21A8A51A89A370004EB314 /* flightplanstatus.c */,
+				5D21A8A61A89A370004EB314 /* flightplanstatus.h */,
+				5D21A8A71A89A370004EB314 /* flightstatus.c */,
+				5D21A8A81A89A370004EB314 /* flightstatus.h */,
+				5D21A8A91A89A370004EB314 /* flighttelemetrystats.c */,
+				5D21A8AA1A89A370004EB314 /* flighttelemetrystats.h */,
+				5D21A8AB1A89A370004EB314 /* gcsreceiver.c */,
+				5D21A8AC1A89A370004EB314 /* gcsreceiver.h */,
+				5D21A8AD1A89A370004EB314 /* gcstelemetrystats.c */,
+				5D21A8AE1A89A370004EB314 /* gcstelemetrystats.h */,
+				5D21A8AF1A89A370004EB314 /* gpsextendedstatus.c */,
+				5D21A8B01A89A370004EB314 /* gpsextendedstatus.h */,
+				5D21A8B11A89A370004EB314 /* gpspositionsensor.c */,
+				5D21A8B21A89A370004EB314 /* gpspositionsensor.h */,
+				5D21A8B31A89A370004EB314 /* gpssatellites.c */,
+				5D21A8B41A89A370004EB314 /* gpssatellites.h */,
+				5D21A8B51A89A370004EB314 /* gpssettings.c */,
+				5D21A8B61A89A370004EB314 /* gpssettings.h */,
+				5D21A8B71A89A370004EB314 /* gpstime.c */,
+				5D21A8B81A89A370004EB314 /* gpstime.h */,
+				5D21A8B91A89A370004EB314 /* gpsvelocitysensor.c */,
+				5D21A8BA1A89A370004EB314 /* gpsvelocitysensor.h */,
+				5D21A8BB1A89A370004EB314 /* groundtruth.c */,
+				5D21A8BC1A89A370004EB314 /* groundtruth.h */,
+				5D21A8BD1A89A370004EB314 /* gyrosensor.c */,
+				5D21A8BE1A89A370004EB314 /* gyrosensor.h */,
+				5D21A8BF1A89A370004EB314 /* gyrostate.c */,
+				5D21A8C01A89A370004EB314 /* gyrostate.h */,
+				5D21A8C11A89A370004EB314 /* homelocation.c */,
+				5D21A8C21A89A370004EB314 /* homelocation.h */,
+				5D21A8C31A89A370004EB314 /* hwsettings.c */,
+				5D21A8C41A89A370004EB314 /* hwsettings.h */,
+				5D21A8C51A89A370004EB314 /* i2cstats.c */,
+				5D21A8C61A89A370004EB314 /* i2cstats.h */,
+				5D21A8C71A89A370004EB314 /* magsensor.c */,
+				5D21A8C81A89A370004EB314 /* magsensor.h */,
+				5D21A8C91A89A370004EB314 /* magstate.c */,
+				5D21A8CA1A89A370004EB314 /* magstate.h */,
+				5D21A8CB1A89A370004EB314 /* Makefile.inc */,
+				5D21A8CC1A89A370004EB314 /* manualcontrolcommand.c */,
+				5D21A8CD1A89A370004EB314 /* manualcontrolcommand.h */,
+				5D21A8CE1A89A370004EB314 /* manualcontrolsettings.c */,
+				5D21A8CF1A89A370004EB314 /* manualcontrolsettings.h */,
+				5D21A8D01A89A370004EB314 /* mixersettings.c */,
+				5D21A8D11A89A370004EB314 /* mixersettings.h */,
+				5D21A8D21A89A370004EB314 /* mixerstatus.c */,
+				5D21A8D31A89A370004EB314 /* mixerstatus.h */,
+				5D21A8D41A89A370004EB314 /* mpu6000settings.c */,
+				5D21A8D51A89A370004EB314 /* mpu6000settings.h */,
+				5D21A8D61A89A370004EB314 /* nedaccel.c */,
+				5D21A8D71A89A370004EB314 /* nedaccel.h */,
+				5D21A8D81A89A370004EB314 /* objectpersistence.c */,
+				5D21A8D91A89A370004EB314 /* objectpersistence.h */,
+				5D21A8DA1A89A370004EB314 /* oplinkreceiver.c */,
+				5D21A8DB1A89A370004EB314 /* oplinkreceiver.h */,
+				5D21A8DC1A89A370004EB314 /* oplinksettings.c */,
+				5D21A8DD1A89A370004EB314 /* oplinksettings.h */,
+				5D21A8DE1A89A370004EB314 /* oplinkstatus.c */,
+				5D21A8DF1A89A370004EB314 /* oplinkstatus.h */,
+				5D21A8E01A89A370004EB314 /* osdsettings.c */,
+				5D21A8E11A89A370004EB314 /* osdsettings.h */,
+				5D21A8E21A89A370004EB314 /* overosyncsettings.c */,
+				5D21A8E31A89A370004EB314 /* overosyncsettings.h */,
+				5D21A8E41A89A370004EB314 /* overosyncstats.c */,
+				5D21A8E51A89A370004EB314 /* overosyncstats.h */,
+				5D21A8E61A89A370004EB314 /* pathaction.c */,
+				5D21A8E71A89A370004EB314 /* pathaction.h */,
+				5D21A8E81A89A370004EB314 /* pathdesired.c */,
+				5D21A8E91A89A370004EB314 /* pathdesired.h */,
+				5D21A8EA1A89A370004EB314 /* pathplan.c */,
+				5D21A8EB1A89A370004EB314 /* pathplan.h */,
+				5D21A8EC1A89A370004EB314 /* pathstatus.c */,
+				5D21A8ED1A89A370004EB314 /* pathstatus.h */,
+				5D21A8EE1A89A370004EB314 /* perfcounter.c */,
+				5D21A8EF1A89A370004EB314 /* perfcounter.h */,
+				5D21A8F01A89A370004EB314 /* poilearnsettings.c */,
+				5D21A8F11A89A370004EB314 /* poilearnsettings.h */,
+				5D21A8F21A89A370004EB314 /* poilocation.c */,
+				5D21A8F31A89A370004EB314 /* poilocation.h */,
+				5D21A8F41A89A370004EB314 /* positionstate.c */,
+				5D21A8F51A89A370004EB314 /* positionstate.h */,
+				5D21A8F61A89A370004EB314 /* radiocombridgestats.c */,
+				5D21A8F71A89A370004EB314 /* radiocombridgestats.h */,
+				5D21A8F81A89A370004EB314 /* ratedesired.c */,
+				5D21A8F91A89A370004EB314 /* ratedesired.h */,
+				5D21A8FA1A89A370004EB314 /* receiveractivity.c */,
+				5D21A8FB1A89A370004EB314 /* receiveractivity.h */,
+				5D21A8FC1A89A370004EB314 /* revocalibration.c */,
+				5D21A8FD1A89A370004EB314 /* revocalibration.h */,
+				5D21A8FE1A89A370004EB314 /* revosettings.c */,
+				5D21A8FF1A89A370004EB314 /* revosettings.h */,
+				5D21A9001A89A370004EB314 /* sonaraltitude.c */,
+				5D21A9011A89A370004EB314 /* sonaraltitude.h */,
+				5D21A9021A89A370004EB314 /* stabilizationbank.c */,
+				5D21A9031A89A370004EB314 /* stabilizationbank.h */,
+				5D21A9041A89A370004EB314 /* stabilizationdesired.c */,
+				5D21A9051A89A371004EB314 /* stabilizationdesired.h */,
+				5D21A9061A89A371004EB314 /* stabilizationsettings.c */,
+				5D21A9071A89A371004EB314 /* stabilizationsettings.h */,
+				5D21A9081A89A371004EB314 /* stabilizationsettingsbank1.c */,
+				5D21A9091A89A371004EB314 /* stabilizationsettingsbank1.h */,
+				5D21A90A1A89A371004EB314 /* stabilizationsettingsbank2.c */,
+				5D21A90B1A89A371004EB314 /* stabilizationsettingsbank2.h */,
+				5D21A90C1A89A371004EB314 /* stabilizationsettingsbank3.c */,
+				5D21A90D1A89A371004EB314 /* stabilizationsettingsbank3.h */,
+				5D21A90E1A89A371004EB314 /* stabilizationstatus.c */,
+				5D21A90F1A89A371004EB314 /* stabilizationstatus.h */,
+				5D21A9101A89A371004EB314 /* systemalarms.c */,
+				5D21A9111A89A371004EB314 /* systemalarms.h */,
+				5D21A9121A89A371004EB314 /* systemsettings.c */,
+				5D21A9131A89A371004EB314 /* systemsettings.h */,
+				5D21A9141A89A371004EB314 /* systemstats.c */,
+				5D21A9151A89A371004EB314 /* systemstats.h */,
+				5D21A9161A89A371004EB314 /* takeofflocation.c */,
+				5D21A9171A89A371004EB314 /* takeofflocation.h */,
+				5D21A9181A89A371004EB314 /* taskinfo.c */,
+				5D21A9191A89A371004EB314 /* taskinfo.h */,
+				5D21A91A1A89A371004EB314 /* txpidsettings.c */,
+				5D21A91B1A89A371004EB314 /* txpidsettings.h */,
+				5D21A91C1A89A371004EB314 /* uavobjectsinit.c */,
+				5D21A91D1A89A371004EB314 /* uavobjectsinit.h */,
+				5D21A91E1A89A371004EB314 /* velocitydesired.c */,
+				5D21A91F1A89A371004EB314 /* velocitydesired.h */,
+				5D21A9201A89A371004EB314 /* velocitystate.c */,
+				5D21A9211A89A371004EB314 /* velocitystate.h */,
+				5D21A9221A89A371004EB314 /* vtolpathfollowersettings.c */,
+				5D21A9231A89A371004EB314 /* vtolpathfollowersettings.h */,
+				5D21A9241A89A371004EB314 /* watchdogstatus.c */,
+				5D21A9251A89A371004EB314 /* watchdogstatus.h */,
+				5D21A9261A89A371004EB314 /* waypoint.c */,
+				5D21A9271A89A371004EB314 /* waypoint.h */,
+				5D21A9281A89A371004EB314 /* waypointactive.c */,
+				5D21A9291A89A371004EB314 /* waypointactive.h */,
 				65E466BC14E244020075459C /* uavobjectdefinition */,
 			);
 			name = shared;
