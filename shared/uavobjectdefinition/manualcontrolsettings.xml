@@ -23,6 +23,8 @@
 
         <field name="FailsafeFlightModeSwitchPosition" units="" type="int8" elements="1" defaultvalue="-1"/>
         <field name="FailsafeChannel" units="%" type="float" elementnames="Throttle,Roll,Pitch,Yaw,Collective,Accessory0,Accessory1,Accessory2" defaultvalue="-1,0,0,0,0,0,0,0" />
+        <field name="GCSControl" units="" type="enum" elements="1" options="False,True" defaultvalue="False"/>
+        <field name="GCSControlTimeoutValue" units="s" type="uint16" elements="1" defaultvalue="500"/>
 
         <access gcs="readwrite" flight="readwrite"/>
         <telemetrygcs acked="true" updatemode="onchange" period="0"/>

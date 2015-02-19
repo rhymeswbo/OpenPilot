@@ -175,11 +175,14 @@ static void manualControlTask(void)
 #endif
     // Process flight mode
     FlightStatusData flightStatus;
-
     FlightStatusGet(&flightStatus);
+
     ManualControlCommandData cmd;
     ManualControlCommandGet(&cmd);
 
+    ManualControlSettingsData cmd_settings;
+    ManualControlSettingsGet(&cmd_settings);
+    
     FlightModeSettingsData modeSettings;
     FlightModeSettingsGet(&modeSettings);
 
@@ -235,6 +238,29 @@ static void manualControlTask(void)
         flightStatus.FlightMode   = newMode;
         FlightStatusSet(&flightStatus);
         newinit = true;
+    }
+    
+    // if using GCS control, make sure input is still flowing via telemetry
+    static portTickType lastGCSControlTimeStamp = 0;
+    static unsigned int   lastGCSLastUpdateID = 0;
+    if (cmd_settings.GCSControl) {
+        
+        // update timestamps
+        if (cmd.GCSLastUpdateID != lastGCSLastUpdateID) {
+            lastGCSControlTimeStamp = xTaskGetTickCount();
+            lastGCSLastUpdateID = cmd.GCSLastUpdateID;
+    
+        
+        // check for elapse time
+        } else if ( xTaskGetTickCount() - lastGCSControlTimeStamp >= cmd_settings.GCSControlTimeoutValue){
+            // The GCS control (joystick) has timedout.
+            
+            // this will set us into failsafe mode
+            // -fs is defined in manualcontrolsettings
+            // -fs in implemented in reciever module receiver.c
+            cmd.Connected=false;
+            ManualControlCommandSet(&cmd);
+        }
     }
     if (handler->handler) {
         handler->handler(newinit);

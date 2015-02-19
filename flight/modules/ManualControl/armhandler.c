@@ -98,7 +98,7 @@ void armHandler(bool newinit)
         armSwitch = true;
         break;
     case FLIGHTMODESETTINGS_ARMING_GCSCONTROL:
-        acc->AccessoryVal=cmd->GCSArmingRequested? 1 : -1;
+        acc.AccessoryVal=cmd.GCSArmingRequested? 1 : -1;
         armSwitch = true;
     default:
         break;

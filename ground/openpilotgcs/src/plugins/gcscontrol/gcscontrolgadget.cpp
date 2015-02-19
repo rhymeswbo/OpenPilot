@@ -31,6 +31,7 @@
 #include "uavobjectmanager.h"
 #include "uavobject.h"
 #include <QDebug>
+#include <time.h> 
 
 #define JOYSTICK_UPDATE_RATE 50
 
@@ -368,6 +369,7 @@ void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
         ExtensionSystem::PluginManager *pm  = ExtensionSystem::PluginManager::instance();
         UAVObjectManager *objManager = pm->getObject<UAVObjectManager>();
         UAVDataObject *manualControlCommand = dynamic_cast<UAVDataObject *>(objManager->getObject(QString("ManualControlCommand")));
+        UAVDataObject *manualControlSettings = dynamic_cast<UAVDataObject *>(objManager->getObject(QString("ManualControlSettings")));
         UAVDataObject *flightModeSettings = dynamic_cast<UAVDataObject *>(objManager->getObject(QString("FlightModeSettings")));
         bool currentCGSControl = ((GCSControlGadgetWidget *)m_widget)->getGCSControl();
   
@@ -387,9 +389,9 @@ void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
         case BModeToggleGCSControl: // GCS Control
                 // Toggle the GCS Control checkbox, its built in signalling will handle the update to OP
             ((GCSControlGadgetWidget *)m_widget)->setGCSControl(!currentCGSControl);
-            manualControlCommand->getField("GCSControl")->setValue(currentCGSControl? "False":"True");
+            manualControlSettings->getField("GCSControl")->setValue(currentCGSControl? "False":"True");
             manualControlCommand->getField("Connected")->setValue(currentCGSControl? "False":"True");
-            flightModeSettings->getField("Arming")->setValue(currentCGSControl? "Yaw Right":"GCSControl")
+            flightModeSettings->getField("Arming")->setValue(currentCGSControl? "Yaw Right":"GCSControl");
 
             break;
         case BModeFlightMode1:
@@ -412,7 +414,7 @@ void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
             break;
         }
 
-        manualControlCommand->getField("GCSLastUpdateID")->setValue((int) (0xFFFFFFFF & time());
+        manualControlCommand->getField("GCSLastUpdateID")->setValue((int) (0xFFFFFFFF & time(NULL)));
         manualControlCommand->updated();
     }
     // buttonSettings[number].ActionID NIDT

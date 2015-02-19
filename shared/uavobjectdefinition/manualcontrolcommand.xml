@@ -10,7 +10,6 @@
         <field name="Thrust" units="%" type="float" elements="1"/>
         <field name="Channel" units="us" type="uint16" elements="9"/>
         <field name="FlightModeSwitchPosition" units="" type="uint8" elements="1" defaultvalue="0"/>
-        <field name="GCSControl" units="" type="enum" elements="1" options="False,True" defaultvalue="False"/>
         <field name="GCSArmingRequested" units="" type="enum" elements="1" options="False,True" defaultvalue="False"/>
         <field name="GCSLastUpdateID" units="" type="uint32" elements="1" defaultvalue="0"/>
         <access gcs="readwrite" flight="readwrite"/>
