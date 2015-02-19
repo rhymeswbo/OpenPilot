@@ -368,6 +368,7 @@ void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
         ExtensionSystem::PluginManager *pm  = ExtensionSystem::PluginManager::instance();
         UAVObjectManager *objManager = pm->getObject<UAVObjectManager>();
         UAVDataObject *manualControlCommand = dynamic_cast<UAVDataObject *>(objManager->getObject(QString("ManualControlCommand")));
+        UAVDataObject *flightModeSettings = dynamic_cast<UAVDataObject *>(objManager->getObject(QString("FlightModeSettings")));
         bool currentCGSControl = ((GCSControlGadgetWidget *)m_widget)->getGCSControl();
   
 
@@ -376,14 +377,19 @@ void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
             if (currentCGSControl) {
                 if (((GCSControlGadgetWidget *)m_widget)->getArmed()) {
                     ((GCSControlGadgetWidget *)m_widget)->setArmed(false);
+                    manualControlCommand->getField("GCSArmingRequested")->setValue("False");
                 } else {
                     ((GCSControlGadgetWidget *)m_widget)->setArmed(true);
+                    manualControlCommand->getField("GCSArmingRequested")->setValue("True");
                 }
             }
             break;
         case BModeToggleGCSControl: // GCS Control
                 // Toggle the GCS Control checkbox, its built in signalling will handle the update to OP
             ((GCSControlGadgetWidget *)m_widget)->setGCSControl(!currentCGSControl);
+            manualControlCommand->getField("GCSControl")->setValue(currentCGSControl? "False":"True");
+            manualControlCommand->getField("Connected")->setValue(currentCGSControl? "False":"True");
+            flightModeSettings->getField("Arming")->setValue(currentCGSControl? "Yaw Right":"GCSControl")
 
             break;
         case BModeFlightMode1:
@@ -406,9 +412,7 @@ void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
             break;
         }
 
-
-
-        manualControlCommand->getField("Connected")->setValue("True");
+        manualControlCommand->getField("GCSLastUpdateID")->setValue((int) (0xFFFFFFFF & time());
         manualControlCommand->updated();
     }
     // buttonSettings[number].ActionID NIDT
@@ -422,12 +426,13 @@ void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
 #define GRThrottleChannel 1
 #define GRAuxThrottleUpChannel 4
 #define GRAuxThrottleDownChannel 5
-#define GRStickDeadZone 0.1
+#define GRStickDeadZone 0.15
 #define GRMaxRCValue 32767
+
 inline double GRApplyDeadZone(double rawValue){
     int sign = (rawValue >=0)? 1 : -1;
     double DZScaled = GRStickDeadZone * GRMaxRCValue;
-    if(abs(rawValue) > DZScaled) return (sign * (abs(rawValue) - DZScaled));
+    if(abs(rawValue) > DZScaled) return (sign * (abs(rawValue) - DZScaled) * GRMaxRCValue/(GRMaxRCValue-DZScaled));
     else return 0;
 
 }

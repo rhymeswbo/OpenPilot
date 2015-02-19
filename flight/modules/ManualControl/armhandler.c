@@ -97,6 +97,9 @@ void armHandler(bool newinit)
         AccessoryDesiredInstGet(2, &acc);
         armSwitch = true;
         break;
+    case FLIGHTMODESETTINGS_ARMING_GCSCONTROL:
+        acc->AccessoryVal=cmd->GCSArmingRequested? 1 : -1;
+        armSwitch = true;
     default:
         break;
     }
@@ -171,6 +174,7 @@ void armHandler(bool newinit)
     case FLIGHTMODESETTINGS_ARMING_ACCESSORY0:
     case FLIGHTMODESETTINGS_ARMING_ACCESSORY1:
     case FLIGHTMODESETTINGS_ARMING_ACCESSORY2:
+    case FLIGHTMODESETTINGS_ARMING_GCSCONTROL:
         armingInputLevel = -1.0f * acc.AccessoryVal;
         break;
     }

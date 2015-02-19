@@ -1518,6 +1518,17 @@
           <enableVbo>false</enableVbo>
         </data>
       </Aeroquad__PCT__20__PCT__2B>
+      <Gemini>
+        <configInfo>
+          <locked>false</locked>
+          <version>0.0.0</version>
+        </configInfo>
+        <data>
+          <acFilename>%%DATAPATH%%models/boards/gemini/gemini.3ds</acFilename>
+          <bgFilename>%%DATAPATH%%models/backgrounds/default_background.png</bgFilename>
+          <enableVbo>false</enableVbo>
+        </data>
+      </Gemini>
       <CopterControl>
         <configInfo>
           <locked>false</locked>
