@@ -243,15 +243,15 @@ static void manualControlTask(void)
     // if using GCS control, make sure input is still flowing via telemetry
     static portTickType lastGCSControlTimeStamp = 0;
     static unsigned int   lastGCSLastUpdateID = 0;
-    if (cmd_settings.GCSControl) {
+    if (cmd.GCSControl) {
         
-        // update timestamps
+        // update timestamps if new commands have arrived.
         if (cmd.GCSLastUpdateID != lastGCSLastUpdateID) {
             lastGCSControlTimeStamp = xTaskGetTickCount();
             lastGCSLastUpdateID = cmd.GCSLastUpdateID;
     
         
-        // check for elapse time
+        // no new commands socheck for elapse time and timeout
         } else if ( xTaskGetTickCount() - lastGCSControlTimeStamp >= cmd_settings.GCSControlTimeoutValue){
             // The GCS control (joystick) has timedout.
             

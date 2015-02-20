@@ -212,7 +212,7 @@ void GCSControlGadget::sticksChangedLocally(double leftX, double leftY, double r
     // if (newThrottle != oldThrottle) {
     // convert widget's throttle stick range (-1..+1) to ManualControlCommand.Throttle range (0..1)
     newThrottle = (newThrottle + 1.0) / 2.0;
-
+    //printf(" newThrottle=%f ",newThrottle);
     // safety value to stop the motors from spinning at 0% throttle
     if (newThrottle <= 0.01) {
         newThrottle = -1;
@@ -220,7 +220,8 @@ void GCSControlGadget::sticksChangedLocally(double leftX, double leftY, double r
     // }
 
 
-    if ((newThrottle != oldThrottle) || (newPitch != oldPitch) || (newYaw != oldYaw) || (newRoll != oldRoll)) {
+    if ( manualControlCommand->getField("GCSControl")->getValue().toBool()
+        && ((newThrottle != oldThrottle) || (newPitch != oldPitch) || (newYaw != oldYaw) || (newRoll != oldRoll))) {
         if (buttonRollControl == 0) {
             manualControlCommand->getField("Roll")->setDouble(newRoll);
         }
@@ -235,6 +236,7 @@ void GCSControlGadget::sticksChangedLocally(double leftX, double leftY, double r
             manualControlCommand->getField("Thrust")->setDouble(newThrottle);
         }
         manualControlCommand->getField("Connected")->setValue("True");
+        manualControlCommand->getField("GCSLastUpdateID")->setValue((int) (0xFFFFFFFF & time(NULL)));
         manualControlCommand->updated();
     }
 }
@@ -352,7 +354,7 @@ double GCSControlGadget::constrain(double value)
 static int GRButtonFunctionMap[] = 
     {0,0,0,0, 
     BModeToggleARM,BModeToggleGCSControl,0,0, 
-    0,0,0,BModeFlightMode1,
+    0,0,BModeFlightMode5,BModeFlightMode1,
     BModeFlightMode2,BModeFlightMode3,BModeFlightMode4,0};
 /*
     up, down, left, right
@@ -389,9 +391,10 @@ void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
         case BModeToggleGCSControl: // GCS Control
                 // Toggle the GCS Control checkbox, its built in signalling will handle the update to OP
             ((GCSControlGadgetWidget *)m_widget)->setGCSControl(!currentCGSControl);
-            manualControlSettings->getField("GCSControl")->setValue(currentCGSControl? "False":"True");
+            manualControlCommand->getField("GCSControl")->setValue(currentCGSControl? "False":"True");
             manualControlCommand->getField("Connected")->setValue(currentCGSControl? "False":"True");
-            flightModeSettings->getField("Arming")->setValue(currentCGSControl? "Yaw Right":"GCSControl");
+            //these "control" UAVObjects don't get updated dynamically. until i figure that out just do it by hand.
+            //flightModeSettings->getField("Arming")->setValue(currentCGSControl? "Yaw Right":"GCSControl");
 
             break;
         case BModeFlightMode1:
@@ -456,7 +459,7 @@ void GCSControlGadget::axesValues(QListInt16 values)
     double max    = GRMaxRCValue;
 
     double GRThrottle = (values[GRAuxThrottleUpChannel] - values[GRAuxThrottleDownChannel]) / 2  ;  //left trigger is neg, right trigger is possittive 
-
+    if (GRThrottle==0) GRThrottle=0.001;
     
 
     if (joystickTime.elapsed() > JOYSTICK_UPDATE_RATE) {
