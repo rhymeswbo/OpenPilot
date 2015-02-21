@@ -34,7 +34,6 @@
 #include <time.h> 
 
 #define JOYSTICK_UPDATE_RATE 50
-static bool ControlTestON = true;
 
 GCSControlGadget::GCSControlGadget(QString classId, GCSControlGadgetWidget *widget, QWidget *parent, QObject *plugin) :
     IUAVGadget(classId, parent),
@@ -237,8 +236,7 @@ void GCSControlGadget::sticksChangedLocally(double leftX, double leftY, double r
             manualControlCommand->getField("Thrust")->setDouble(newThrottle);
         }
         manualControlCommand->getField("Connected")->setValue("True");
-        
-        if (ControlTestON) manualControlCommand->getField("GCSLastUpdateID")->setValue((int) (0xFFFFFFFF & time(NULL)));
+        manualControlCommand->getField("GCSLastUpdateID")->setValue((int) (0xFFFFFFFF & time(NULL)));
         manualControlCommand->updated();
     }
 }
@@ -352,14 +350,11 @@ double GCSControlGadget::constrain(double value)
 #define BModeFlightMode4 6
 #define BModeFlightMode5 7
 #define BModeFlightMode6 8
-#define ControlTestEnableON 15
-#define ControlTestEnableOFF 16
-
 
 static int GRButtonFunctionMap[] = 
     {0,0,0,0, 
     BModeToggleARM,BModeToggleGCSControl,0,0, 
-    ControlTestEnableOFF,ControlTestEnableON,BModeFlightMode5,BModeFlightMode1,
+    0,0,BModeFlightMode5,BModeFlightMode1,
     BModeFlightMode2,BModeFlightMode3,BModeFlightMode4,0};
 /*
     up, down, left, right
@@ -371,7 +366,6 @@ static int GRButtonFunctionMap[] =
 void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
 {
     //printf("%d \n ",number);
- 
     if (GRButtonFunctionMap[number]>0 && pressed){
 
         ExtensionSystem::PluginManager *pm  = ExtensionSystem::PluginManager::instance();
@@ -384,7 +378,7 @@ void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
 
         switch (GRButtonFunctionMap[number]){
         case BModeToggleARM: // Armed
-            if (currentCGSControl && ControlTestON) {
+            if (currentCGSControl) {
                 if (((GCSControlGadgetWidget *)m_widget)->getArmed()) {
                     ((GCSControlGadgetWidget *)m_widget)->setArmed(false);
                     manualControlCommand->getField("GCSArmingRequested")->setValue("False");
@@ -396,11 +390,9 @@ void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
             break;
         case BModeToggleGCSControl: // GCS Control
                 // Toggle the GCS Control checkbox, its built in signalling will handle the update to OP
-
-                ((GCSControlGadgetWidget *)m_widget)->setGCSControl(currentCGSControl? "False":"True");
-                manualControlCommand->getField("GCSControl")->setValue(currentCGSControl? "False":"True");
-                manualControlCommand->getField("Connected")->setValue(currentCGSControl? "False":"True");
-    
+            ((GCSControlGadgetWidget *)m_widget)->setGCSControl(!currentCGSControl);
+            manualControlCommand->getField("GCSControl")->setValue(currentCGSControl? "False":"True");
+            manualControlCommand->getField("Connected")->setValue(currentCGSControl? "False":"True");
             //these "control" UAVObjects don't get updated dynamically. until i figure that out just do it by hand.
             //flightModeSettings->getField("Arming")->setValue(currentCGSControl? "Yaw Right":"GCSControl");
 
@@ -423,17 +415,10 @@ void GCSControlGadget::buttonState(ButtonNumber number, bool pressed)
         case BModeFlightMode6:
             ((GCSControlGadgetWidget *)m_widget)->selectFlightMode(5);
             break;
-        case ControlTestEnableON:
-            ControlTestON=true;
-            break;
-        case ControlTestEnableOFF:
-            ControlTestON=false;
-            break;
         }
 
-        if (ControlTestON) manualControlCommand->getField("GCSLastUpdateID")->setValue((int) (0xFFFFFFFF & time(NULL)));
+        manualControlCommand->getField("GCSLastUpdateID")->setValue((int) (0xFFFFFFFF & time(NULL)));
         manualControlCommand->updated();
-    
     }
     // buttonSettings[number].ActionID NIDT
     // buttonSettings[number].FunctionID -RPYTAC
@@ -460,7 +445,6 @@ inline double GRApplyDeadZone(double rawValue){
 void GCSControlGadget::axesValues(QListInt16 values)
 {
     int chMax = values.length();
-
 
     if (rollChannel >= chMax || pitchChannel >= chMax ||
         yawChannel >= chMax || throttleChannel >= chMax) {

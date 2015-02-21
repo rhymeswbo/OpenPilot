@@ -129,6 +129,9 @@ int32_t ReceiverInitialize()
     ManualControlCommandInitialize();
     ReceiverActivityInitialize();
     ManualControlSettingsInitialize();
+    FlightStatusInitialize();
+
+    
 
     return 0;
 }
@@ -295,6 +298,10 @@ static void receiverTask(__attribute__((unused)) void *parameters)
                                                     settings.ChannelMax.Accessory2, cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_ACCESSORY2]);
         }
 
+        //if (cmd.GCSControl){
+        //    valid_input_detected &= !flightStatus.GCSControlTimeout;
+        //}
+        
         // Implement hysteresis loop on connection status
         if (valid_input_detected && (++connected_count > 10)) {
             cmd.Connected      = MANUALCONTROLCOMMAND_CONNECTED_TRUE;
@@ -306,7 +313,9 @@ static void receiverTask(__attribute__((unused)) void *parameters)
             disconnected_count = 0;
         }
 
-        if (cmd.Connected == MANUALCONTROLCOMMAND_CONNECTED_FALSE) {
+        if ( (cmd.Connected == MANUALCONTROLCOMMAND_CONNECTED_FALSE)
+            || (cmd.GCSControl && flightStatus.GCSControlTimeout)) {
+            flightStatus.FailsafeLevel=FLIGHTSTATUS_FAILSAFELEVEL_FAILSAFE1;
             cmd.Throttle   = settings.FailsafeChannel.Throttle;
             cmd.Roll       = settings.FailsafeChannel.Roll;
             cmd.Pitch      = settings.FailsafeChannel.Pitch;
@@ -350,6 +359,8 @@ static void receiverTask(__attribute__((unused)) void *parameters)
                 }
             }
         } else if (valid_input_detected) {
+            flightStatus.FailsafeLevel=FLIGHTSTATUS_FAILSAFELEVEL_NONE;
+
             AlarmsClear(SYSTEMALARMS_ALARM_RECEIVER);
 
             // Scale channels to -1 -> +1 range
@@ -440,6 +451,8 @@ static void receiverTask(__attribute__((unused)) void *parameters)
 
         // Update cmd object
         ManualControlCommandSet(&cmd);
+        FlightStatusSet(&flightStatus);
+
 #if defined(PIOS_INCLUDE_USB_RCTX)
         if (pios_usb_rctx_id) {
             PIOS_USB_RCTX_Update(pios_usb_rctx_id,
