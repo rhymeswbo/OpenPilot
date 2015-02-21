@@ -1,0 +1,42 @@
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:    double roll     = manualControlCommand->getField("Roll")->getDouble();
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:    double pitch    = manualControlCommand->getField("Pitch")->getDouble();
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:    double yaw      = manualControlCommand->getField("Yaw")->getDouble();
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:    double throttle = manualControlCommand->getField("Throttle")->getDouble();
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:    double oldRoll     = manualControlCommand->getField("Roll")->getDouble();
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:    double oldPitch    = manualControlCommand->getField("Pitch")->getDouble();
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:    double oldYaw      = manualControlCommand->getField("Yaw")->getDouble();
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:    double oldThrottle = manualControlCommand->getField("Throttle")->getDouble();
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:    if ( manualControlCommand->getField("GCSControl")->getValue().toBool()
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:            manualControlCommand->getField("Roll")->setDouble(newRoll);
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:            manualControlCommand->getField("Pitch")->setDouble(newPitch);
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:            manualControlCommand->getField("Yaw")->setDouble(newYaw);
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:            manualControlCommand->getField("Throttle")->setDouble(newThrottle);
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:            manualControlCommand->getField("Thrust")->setDouble(newThrottle);
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:        manualControlCommand->getField("Connected")->setValue("True");
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:        manualControlCommand->getField("GCSLastUpdateID")->setValue((int) (0xFFFFFFFF & time(NULL)));
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:        //if (ControlTestON) manualControlCommand->updated();
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:        manualControlCommand->updated();
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:            if (pitch != manualControlCommand->getField("Pitch")->getDouble()) {
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:                manualControlCommand->getField("Pitch")->setDouble(constrain(pitch));
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:            if (yaw != manualControlCommand->getField("Yaw")->getDouble()) {
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:                manualControlCommand->getField("Yaw")->setDouble(constrain(yaw));
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:            if (roll != manualControlCommand->getField("Roll")->getDouble()) {
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:                manualControlCommand->getField("Roll")->setDouble(constrain(roll));
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:            if (throttle != manualControlCommand->getField("Throttle")->getDouble()) {
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:                manualControlCommand->getField("Throttle")->setDouble(constrain(throttle));
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:                manualControlCommand->getField("Thrust")->setDouble(constrain(throttle));
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:                manualControlCommand->getField("Connected")->setValue("True");
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:                manualControlCommand->updated();
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:                    manualControlCommand->getField("GCSArmingRequested")->setValue("False");
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:                    manualControlCommand->getField("GCSArmingRequested")->setValue("True");
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:            manualControlCommand->getField("GCSControl")->setValue(currentCGSControl? "False":"True");
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:            manualControlCommand->getField("Connected")->setValue(currentCGSControl? "False":"True");
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:        manualControlCommand->getField("GCSLastUpdateID")->setValue((int) (0xFFFFFFFF & time(NULL)));
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:        //if (ControlTestON) manualControlCommand->updated();
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadget.cpp:        manualControlCommand->updated();
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadgetwidget.cpp:    UAVObject::Metadata mdata = manualControlCommand->getMetadata();
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadgetwidget.cpp:    UAVObject::Metadata mdata = manualControlCommand->getMetadata();
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadgetwidget.cpp:    manualControlCommand->setMetadata(mdata);
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadgetwidget.cpp:    m_gcscontrol->comboBoxFlightMode->setCurrentIndex(manualControlCommand->getField("FlightModeSwitchPosition")->getValue().toInt());
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadgetwidget.cpp:    manualControlCommand->getField("FlightModeSwitchPosition")->setValue(state);
+ground/./openpilotgcs/src/plugins/gcscontrol/gcscontrolgadgetwidget.cpp:    manualControlCommand->updated();

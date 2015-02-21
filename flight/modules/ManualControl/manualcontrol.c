@@ -243,15 +243,22 @@ static void manualControlTask(void)
     // if using GCS control, make sure input is still flowing via telemetry
     static portTickType lastGCSControlTimeStamp = 0;
     static unsigned int   lastGCSLastUpdateID = 0;
+    
     if (cmd.GCSControl) {
+        
         
         // update timestamps if new commands have arrived.
         if (cmd.GCSLastUpdateID != lastGCSLastUpdateID) {
             lastGCSControlTimeStamp = xTaskGetTickCount();
             lastGCSLastUpdateID = cmd.GCSLastUpdateID;
-    
+            // recover from a timeout? :  only if disarmed until I finish more complicate Failsafe behavior.
+            if (flightStatus.Armed==FLIGHTSTATUS_ARMED_DISARMED) {
+                flightStatus.GCSControlTimeout=false;
+                FlightStatusSet(&flightStatus);
+            }
+
         
-        // no new commands socheck for elapse time and timeout
+        // no new commands so check for elapse time and timeout
         } else if ( xTaskGetTickCount() - lastGCSControlTimeStamp >= cmd_settings.GCSControlTimeoutValue){
             // The GCS control (joystick) has timedout.
             
@@ -259,9 +266,16 @@ static void manualControlTask(void)
             // -fs is defined in manualcontrolsettings
             // -fs in implemented in reciever module receiver.c
             cmd.Connected=false;
+            flightStatus.GCSControlTimeout=true;
             ManualControlCommandSet(&cmd);
+            FlightStatusSet(&flightStatus);
+
+
+        } else {
+            //no control update, but ok. no timeout yet.
         }
     }
+
     if (handler->handler) {
         handler->handler(newinit);
     }
