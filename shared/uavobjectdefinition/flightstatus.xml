@@ -8,6 +8,7 @@
         
         <field name="FailsafeLevel" units="" type="enum" elements="1" options="none,failsafe1" defaultvalue="none"/>
         <field name="GCSControlTimeout" units="" type="enum" elements="1" options="false,true" defaultvalue="false"/>
+        <field name="debug" units="" type="uint32" elements="1" defaultvalue="0"/>
 
 	<field name="ControlChain" units="bool" type="enum" options="false,true">
 		<elementnames>

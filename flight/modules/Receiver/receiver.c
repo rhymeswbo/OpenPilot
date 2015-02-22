@@ -157,8 +157,8 @@ static void receiverTask(__attribute__((unused)) void *parameters)
     // Whenever the configuration changes, make sure it is safe to fly
 
     ManualControlCommandGet(&cmd);
-    FlightStatusGet(&flightStatus);
 
+    
     /* Initialize the RcvrActivty FSM */
     portTickType lastActivityTime = xTaskGetTickCount();
     resetRcvrActivity(&activity_fsm);
@@ -178,6 +178,9 @@ static void receiverTask(__attribute__((unused)) void *parameters)
 
         // Read settings
         ManualControlSettingsGet(&settings);
+        FlightStatusGet(&flightStatus);
+        ManualControlCommandGet(&cmd);
+        
         SystemSettingsThrustControlGet(&thrustType);
 
         /* Update channel activity monitor */
@@ -192,11 +195,11 @@ static void receiverTask(__attribute__((unused)) void *parameters)
             lastActivityTime = lastSysTime;
         }
 
-        if (ManualControlCommandReadOnly()) {
+        /*if (ManualControlCommandReadOnly()) {
             FlightTelemetryStatsData flightTelemStats;
             FlightTelemetryStatsGet(&flightTelemStats);
             if (flightTelemStats.Status != FLIGHTTELEMETRYSTATS_STATUS_CONNECTED) {
-                /* trying to fly via GCS and lost connection.  fall back to transmitter */
+                // trying to fly via GCS and lost connection.  fall back to transmitter
                 UAVObjMetadata metadata;
                 ManualControlCommandGetMetadata(&metadata);
                 UAVObjSetAccess(&metadata, ACCESS_READWRITE);
@@ -204,73 +207,82 @@ static void receiverTask(__attribute__((unused)) void *parameters)
             }
             AlarmsSet(SYSTEMALARMS_ALARM_RECEIVER, SYSTEMALARMS_ALARM_WARNING);
             continue;
-        }
-
+        }*/
+        
         bool valid_input_detected = true;
+        //Manual commands are coming from GCS. skip all this channel mapping and format checking stuff.
+        if (cmd.GCSControl) {
+            AlarmsSet(SYSTEMALARMS_ALARM_RECEIVER, SYSTEMALARMS_ALARM_WARNING);
+        } else {
+            
 
-        // Read channel values in us
-        for (uint8_t n = 0; n < MANUALCONTROLSETTINGS_CHANNELGROUPS_NUMELEM && n < MANUALCONTROLCOMMAND_CHANNEL_NUMELEM; ++n) {
-            extern uint32_t pios_rcvr_group_map[];
-
-            if (ManualControlSettingsChannelGroupsToArray(settings.ChannelGroups)[n] >= MANUALCONTROLSETTINGS_CHANNELGROUPS_NONE) {
-                cmd.Channel[n] = PIOS_RCVR_INVALID;
-            } else {
-                cmd.Channel[n] = PIOS_RCVR_Read(pios_rcvr_group_map[
-                                                    ManualControlSettingsChannelGroupsToArray(settings.ChannelGroups)[n]],
-                                                ManualControlSettingsChannelNumberToArray(settings.ChannelNumber)[n]);
+            
+            // Read channel values in us
+            for (uint8_t n = 0; n < MANUALCONTROLSETTINGS_CHANNELGROUPS_NUMELEM && n < MANUALCONTROLCOMMAND_CHANNEL_NUMELEM; ++n) {
+                extern uint32_t pios_rcvr_group_map[];
+                
+                if (ManualControlSettingsChannelGroupsToArray(settings.ChannelGroups)[n] >= MANUALCONTROLSETTINGS_CHANNELGROUPS_NONE) {
+                    cmd.Channel[n] = PIOS_RCVR_INVALID;
+                } else {
+                    cmd.Channel[n] = PIOS_RCVR_Read(pios_rcvr_group_map[
+                                                                        ManualControlSettingsChannelGroupsToArray(settings.ChannelGroups)[n]],
+                                                    ManualControlSettingsChannelNumberToArray(settings.ChannelNumber)[n]);
+                }
+                
+                // If a channel has timed out this is not valid data and we shouldn't update anything
+                // until we decide to go to failsafe
+                if (cmd.Channel[n] == (uint16_t)PIOS_RCVR_TIMEOUT) {
+                    valid_input_detected = false;
+                } else {
+                    scaledChannel[n] = scaleChannel(cmd.Channel[n],
+                                                    ManualControlSettingsChannelMaxToArray(settings.ChannelMax)[n],
+                                                    ManualControlSettingsChannelMinToArray(settings.ChannelMin)[n],
+                                                    ManualControlSettingsChannelNeutralToArray(settings.ChannelNeutral)[n]);
+                }
             }
+            
+            // Check settings, if error raise alarm
+            if (settings.ChannelGroups.Roll >= MANUALCONTROLSETTINGS_CHANNELGROUPS_NONE
+                || settings.ChannelGroups.Pitch >= MANUALCONTROLSETTINGS_CHANNELGROUPS_NONE
+                || settings.ChannelGroups.Yaw >= MANUALCONTROLSETTINGS_CHANNELGROUPS_NONE
+                || settings.ChannelGroups.Throttle >= MANUALCONTROLSETTINGS_CHANNELGROUPS_NONE
+                ||
+                // Check all channel mappings are valid
+                cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_ROLL] == (uint16_t)PIOS_RCVR_INVALID
+                || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_PITCH] == (uint16_t)PIOS_RCVR_INVALID
+                || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_YAW] == (uint16_t)PIOS_RCVR_INVALID
+                || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_THROTTLE] == (uint16_t)PIOS_RCVR_INVALID
+                ||
+                // Check the driver exists
+                cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_ROLL] == (uint16_t)PIOS_RCVR_NODRIVER
+                || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_PITCH] == (uint16_t)PIOS_RCVR_NODRIVER
+                || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_YAW] == (uint16_t)PIOS_RCVR_NODRIVER
+                || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_THROTTLE] == (uint16_t)PIOS_RCVR_NODRIVER
+                ||
+                // Check collective if required
+                (thrustType == SYSTEMSETTINGS_THRUSTCONTROL_COLLECTIVE && (
+                                                                           settings.ChannelGroups.Collective >= MANUALCONTROLSETTINGS_CHANNELGROUPS_NONE
+                                                                           || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_COLLECTIVE] == (uint16_t)PIOS_RCVR_INVALID
+                                                                           || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_COLLECTIVE] == (uint16_t)PIOS_RCVR_NODRIVER))
+                ||
+                // Check the FlightModeNumber is valid
+                settings.FlightModeNumber < 1 || settings.FlightModeNumber > FLIGHTMODESETTINGS_FLIGHTMODEPOSITION_NUMELEM
+                ||
+                // Similar checks for FlightMode channel but only if more than one flight mode has been set. Otherwise don't care
+                ((settings.FlightModeNumber > 1)
+                 && (settings.ChannelGroups.FlightMode >= MANUALCONTROLSETTINGS_CHANNELGROUPS_NONE
+                     || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_FLIGHTMODE] == (uint16_t)PIOS_RCVR_INVALID
+                     || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_FLIGHTMODE] == (uint16_t)PIOS_RCVR_NODRIVER))) {
+                     AlarmsSet(SYSTEMALARMS_ALARM_RECEIVER, SYSTEMALARMS_ALARM_CRITICAL);
+                     //AlarmsSet(SYSTEMALARMS_ALARM_RECEIVER, SYSTEMALARMS_ALARM_WARNING);
 
-            // If a channel has timed out this is not valid data and we shouldn't update anything
-            // until we decide to go to failsafe
-            if (cmd.Channel[n] == (uint16_t)PIOS_RCVR_TIMEOUT) {
-                valid_input_detected = false;
-            } else {
-                scaledChannel[n] = scaleChannel(cmd.Channel[n],
-                                                ManualControlSettingsChannelMaxToArray(settings.ChannelMax)[n],
-                                                ManualControlSettingsChannelMinToArray(settings.ChannelMin)[n],
-                                                ManualControlSettingsChannelNeutralToArray(settings.ChannelNeutral)[n]);
-            }
+                     
+                     cmd.Connected = MANUALCONTROLCOMMAND_CONNECTED_FALSE;
+                     ManualControlCommandSet(&cmd);
+                     
+                     continue;
+                 }
         }
-
-        // Check settings, if error raise alarm
-        if (settings.ChannelGroups.Roll >= MANUALCONTROLSETTINGS_CHANNELGROUPS_NONE
-            || settings.ChannelGroups.Pitch >= MANUALCONTROLSETTINGS_CHANNELGROUPS_NONE
-            || settings.ChannelGroups.Yaw >= MANUALCONTROLSETTINGS_CHANNELGROUPS_NONE
-            || settings.ChannelGroups.Throttle >= MANUALCONTROLSETTINGS_CHANNELGROUPS_NONE
-            ||
-            // Check all channel mappings are valid
-            cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_ROLL] == (uint16_t)PIOS_RCVR_INVALID
-            || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_PITCH] == (uint16_t)PIOS_RCVR_INVALID
-            || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_YAW] == (uint16_t)PIOS_RCVR_INVALID
-            || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_THROTTLE] == (uint16_t)PIOS_RCVR_INVALID
-            ||
-            // Check the driver exists
-            cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_ROLL] == (uint16_t)PIOS_RCVR_NODRIVER
-            || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_PITCH] == (uint16_t)PIOS_RCVR_NODRIVER
-            || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_YAW] == (uint16_t)PIOS_RCVR_NODRIVER
-            || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_THROTTLE] == (uint16_t)PIOS_RCVR_NODRIVER
-            ||
-            // Check collective if required
-            (thrustType == SYSTEMSETTINGS_THRUSTCONTROL_COLLECTIVE && (
-                 settings.ChannelGroups.Collective >= MANUALCONTROLSETTINGS_CHANNELGROUPS_NONE
-                 || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_COLLECTIVE] == (uint16_t)PIOS_RCVR_INVALID
-                 || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_COLLECTIVE] == (uint16_t)PIOS_RCVR_NODRIVER))
-            ||
-            // Check the FlightModeNumber is valid
-            settings.FlightModeNumber < 1 || settings.FlightModeNumber > FLIGHTMODESETTINGS_FLIGHTMODEPOSITION_NUMELEM
-            ||
-            // Similar checks for FlightMode channel but only if more than one flight mode has been set. Otherwise don't care
-            ((settings.FlightModeNumber > 1)
-             && (settings.ChannelGroups.FlightMode >= MANUALCONTROLSETTINGS_CHANNELGROUPS_NONE
-                 || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_FLIGHTMODE] == (uint16_t)PIOS_RCVR_INVALID
-                 || cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_FLIGHTMODE] == (uint16_t)PIOS_RCVR_NODRIVER))) {
-            AlarmsSet(SYSTEMALARMS_ALARM_RECEIVER, SYSTEMALARMS_ALARM_CRITICAL);
-            cmd.Connected = MANUALCONTROLCOMMAND_CONNECTED_FALSE;
-            ManualControlCommandSet(&cmd);
-
-            continue;
-        }
-
         // decide if we have valid manual input or not
         valid_input_detected &= validInputRange(settings.ChannelMin.Throttle,
                                                 settings.ChannelMax.Throttle, cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_THROTTLE])
@@ -298,9 +310,9 @@ static void receiverTask(__attribute__((unused)) void *parameters)
                                                     settings.ChannelMax.Accessory2, cmd.Channel[MANUALCONTROLSETTINGS_CHANNELGROUPS_ACCESSORY2]);
         }
 
-        //if (cmd.GCSControl){
-        //    valid_input_detected &= !flightStatus.GCSControlTimeout;
-        //}
+        if (cmd.GCSControl){
+            valid_input_detected &= !flightStatus.GCSControlTimeout;
+        }
         
         // Implement hysteresis loop on connection status
         if (valid_input_detected && (++connected_count > 10)) {
@@ -315,7 +327,20 @@ static void receiverTask(__attribute__((unused)) void *parameters)
 
         if ( (cmd.Connected == MANUALCONTROLCOMMAND_CONNECTED_FALSE)
             || (cmd.GCSControl && flightStatus.GCSControlTimeout)) {
+            if (ManualControlCommandReadOnly()) {
+                FlightTelemetryStatsData flightTelemStats;
+                FlightTelemetryStatsGet(&flightTelemStats);
+                //if (flightTelemStats.Status != FLIGHTTELEMETRYSTATS_STATUS_CONNECTED) {
+                    /* trying to fly via GCS and lost connection.  fall back to transmitter */
+                    UAVObjMetadata metadata;
+                    ManualControlCommandGetMetadata(&metadata);
+                    UAVObjSetAccess(&metadata, ACCESS_READWRITE);
+                    ManualControlCommandSetMetadata(&metadata);
+                //}
+            }
             flightStatus.FailsafeLevel=FLIGHTSTATUS_FAILSAFELEVEL_FAILSAFE1;
+ 
+            
             cmd.Throttle   = settings.FailsafeChannel.Throttle;
             cmd.Roll       = settings.FailsafeChannel.Roll;
             cmd.Pitch      = settings.FailsafeChannel.Pitch;
@@ -360,6 +385,7 @@ static void receiverTask(__attribute__((unused)) void *parameters)
             }
         } else if (valid_input_detected) {
             flightStatus.FailsafeLevel=FLIGHTSTATUS_FAILSAFELEVEL_NONE;
+
 
             AlarmsClear(SYSTEMALARMS_ALARM_RECEIVER);
 
